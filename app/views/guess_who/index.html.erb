@@ -1,1 +1,7 @@
-INDEX PAGE
+<h1>INDEX PAGE</h1>
+
+<%# if user_signed_in %>
+  <%#= link_to 'Sign Out', 'url' %>
+<%# else %>
+  <%= link_to 'Sign In With GitHub', '/auth/github' %>
+<%# end %>
