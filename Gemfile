@@ -48,7 +48,7 @@ end
 
 gem 'simple_form'
 gem 'omniauth-github'
-gem 'omniauth-openid'
+#gem 'omniauth-openid'
 gem 'omniauth-github-team-member'
 
 
