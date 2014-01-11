@@ -13,4 +13,14 @@ describe MemberInformation do
   it {should_not have_valid(:value).when('', nil)}
 
   it {should belong_to :member}
+
+  describe 'url' do
+    it 'generates service-specific urls' do
+      m = FactoryGirl.build(:member_info_github)
+      expect(m.get_url).to eq(
+        "http://gihtub.com/"+m.value
+        )
+    end
+  end
+
 end
