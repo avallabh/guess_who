@@ -37,13 +37,17 @@ group :test do
 end
 
 group :test, :development do
-  gem 'valid_attribute'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'valid_attribute'
+  gem 'shoulda'
   gem 'launchy'
   gem 'capybara'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'factory_girl_rails'
+  gem 'guard-rspec'
+  gem 'spork-rails'
 end
 
 gem 'simple_form'
