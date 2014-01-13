@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111040924) do
+ActiveRecord::Schema.define(version: 20140113182040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "member_informations", force: true do |t|
+  create_table "member_identities", force: true do |t|
     t.string   "key",        null: false
     t.string   "value",      null: false
     t.integer  "member_id"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140111040924) do
     t.datetime "updated_at"
   end
 
-  add_index "member_informations", ["member_id"], name: "index_member_informations_on_member_id", using: :btree
+  add_index "member_identities", ["member_id"], name: "index_member_identities_on_member_id", using: :btree
 
   create_table "members", force: true do |t|
     t.string   "first_name", null: false

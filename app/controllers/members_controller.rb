@@ -12,7 +12,7 @@ class MembersController < ApplicationController
     @member = Member.new(member_params)
 
     if @member.save
-      redirect_to @member, notice: 'Successfully created member'
+      redirect_to root_path, notice: 'Successfully created member'
     else
       render 'new'
     end
