@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+IdentityType.create(identity_kind: 'GitHub')
+IdentityType.create(identity_kind: 'LinkedIn')
+IdentityType.create(identity_kind: 'Twitter')
+IdentityType.create(identity_kind: 'Hometown')
+IdentityType.create(identity_kind: 'Interests')

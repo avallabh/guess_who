@@ -10,7 +10,7 @@ class IdentitiesController < ApplicationController
   def create
     @identity = Identity.new(identity_params)
     if @identity.save
-      redirect_to members_path, notice: 'Member information added!'
+      redirect_to root_path, notice: 'Member information added!'
     else
       render 'new'
     end
