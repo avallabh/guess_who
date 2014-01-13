@@ -47,6 +47,7 @@ group :test, :development do
   gem 'dotenv-rails'
   gem 'guard-rspec'
   gem 'spork-rails'
+  gem 'rails-erd'
 end
 
 gem 'simple_form'

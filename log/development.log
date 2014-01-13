@@ -404,3 +404,530 @@ ActionView::Template::Error (undefined method `value' for #<Member:0x007f9d3a9c2
   Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
   Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
   Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.8ms)
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-13 09:14:24 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `value' for #<Member:0x007f9d35695850>):
+    36: </p>
+    37: <p>
+    38:   <%= f.label :key, 'GitHub' %>
+    39:   <%= f.text_field :value, placeholder: 'test' %>
+    40: </p>
+    41: 
+    42: <!--
+  app/views/members/new.html.erb:39:in `block in _app_views_members_new_html_erb___587167456623887557_70156591346980'
+  app/views/members/new.html.erb:5:in `_app_views_members_new_html_erb___587167456623887557_70156591346980'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.3ms)
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-13 09:14:25 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (3.2ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `value' for #<Member:0x007f9d33385928>):
+    36: </p>
+    37: <p>
+    38:   <%= f.label :key, 'GitHub' %>
+    39:   <%= f.text_field :value, placeholder: 'test' %>
+    40: </p>
+    41: 
+    42: <!--
+  app/views/members/new.html.erb:39:in `block in _app_views_members_new_html_erb___587167456623887557_70156591346980'
+  app/views/members/new.html.erb:5:in `_app_views_members_new_html_erb___587167456623887557_70156591346980'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.9ms)
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-13 09:47:08 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (2.8ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (undefined method `value' for #<Member:0x007f9d361dc2e0>):
+    36: </p>
+    37: <p>
+    38:   <%= f.label :key, 'GitHub' %>
+    39:   <%= f.text_field :value, placeholder: 'test' %>
+    40: </p>
+    41: 
+    42: <!--
+  app/views/members/new.html.erb:39:in `block in _app_views_members_new_html_erb___587167456623887557_70156591346980'
+  app/views/members/new.html.erb:5:in `_app_views_members_new_html_erb___587167456623887557_70156591346980'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.1ms)
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-13 09:47:32 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (4.6ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
+    34:   <%= f.radio_button :gender, "Female" %> <%= f.label :gender, "Female" %>
+    35:   <%= f.radio_button :gender, "Male" %> <%= f.label :gender, "Male" %>
+    36: </p>
+    37:   <% fields_for @member_informations do |f| %>
+    38:   <p>
+    39:     <%= f.label :key, 'GitHub' %>
+    40:     <%= f.text_field :value, placeholder: 'test' %>
+  app/views/members/new.html.erb:37:in `block in _app_views_members_new_html_erb___587167456623887557_70156634339440'
+  app/views/members/new.html.erb:5:in `_app_views_members_new_html_erb___587167456623887557_70156634339440'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.9ms)
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-13 10:28:28 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
+    34:   <%= f.radio_button :gender, "Female" %> <%= f.label :gender, "Female" %>
+    35:   <%= f.radio_button :gender, "Male" %> <%= f.label :gender, "Male" %>
+    36: </p>
+    37:   <% fields_for @member_informations do |f| %>
+    38:   <p>
+    39:     <%= f.label :key, 'GitHub' %>
+    40:     <%= f.text_field :value, placeholder: 'test' %>
+  app/views/members/new.html.erb:37:in `block in _app_views_members_new_html_erb___587167456623887557_70156634339440'
+  app/views/members/new.html.erb:5:in `_app_views_members_new_html_erb___587167456623887557_70156634339440'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.2ms)
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-13 10:28:32 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (50.4ms)
+Completed 500 Internal Server Error in 53ms
+
+ActionView::Template::Error (undefined method `field_for' for #<#<Class:0x007f9d36134590>:0x007f9d33207650>):
+    34:   <%= f.radio_button :gender, "Female" %> <%= f.label :gender, "Female" %>
+    35:   <%= f.radio_button :gender, "Male" %> <%= f.label :gender, "Male" %>
+    36: </p>
+    37:   <% field_for @member_informations do |f| %>
+    38:   <p>
+    39:     <%= f.label :key, 'GitHub' %>
+    40:     <%= f.text_field :value, placeholder: 'test' %>
+  app/views/members/new.html.erb:37:in `block in _app_views_members_new_html_erb___587167456623887557_70156572176940'
+  app/views/members/new.html.erb:5:in `_app_views_members_new_html_erb___587167456623887557_70156572176940'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.7ms)
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-13 10:28:35 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
+    34:   <%= f.radio_button :gender, "Female" %> <%= f.label :gender, "Female" %>
+    35:   <%= f.radio_button :gender, "Male" %> <%= f.label :gender, "Male" %>
+    36: </p>
+    37:   <% fields_for @member_informations do |f| %>
+    38:   <p>
+    39:     <%= f.label :key, 'GitHub' %>
+    40:     <%= f.text_field :value, placeholder: 'test' %>
+  app/views/members/new.html.erb:37:in `block in _app_views_members_new_html_erb___587167456623887557_70156600249100'
+  app/views/members/new.html.erb:5:in `_app_views_members_new_html_erb___587167456623887557_70156600249100'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.0ms)
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-13 10:47:29 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (21.1ms)
+Completed 200 OK in 101ms (Views: 77.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 10:47:29 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 10:47:29 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 10:47:29 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 10:47:29 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 10:47:29 -0500
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-13 10:47:57 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 10:47:57 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 10:47:57 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 10:47:57 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 10:47:57 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 10:47:57 -0500
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-13 10:48:16 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LdEvUKhg+898sBdL1ANDzLfAThHVPntb6rw4BlIOrz8=", "member"=>{"first_name"=>"Ajay", "last_name"=>"Vallabh", "email"=>"ajay.vallabh@gmail.com", "role"=>"Member", "gender"=>"Male", "member_information"=>{"value"=>"http://github.com/avallabh"}}, "commit"=>"Create Member"}
+Unpermitted parameters: member_information
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (6.5ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", Mon, 13 Jan 2014 15:48:16 UTC +00:00], ["email", "ajay.vallabh@gmail.com"], ["first_name", "Ajay"], ["gender", "Male"], ["last_name", "Vallabh"], ["role", "Member"], ["updated_at", Mon, 13 Jan 2014 15:48:16 UTC +00:00]]
+  [1m[35m (5.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/members/2
+Completed 302 Found in 18ms (ActiveRecord: 12.5ms)
+
+
+Started GET "/members/2" for 127.0.0.1 at 2014-01-13 10:48:16 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMember Load (0.8ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered members/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 10:48:16 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 10:48:16 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 10:48:16 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 10:48:16 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 10:48:16 -0500
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-13 10:50:07 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LdEvUKhg+898sBdL1ANDzLfAThHVPntb6rw4BlIOrz8=", "member"=>{"first_name"=>"bob", "last_name"=>"smith", "email"=>"bobsmith@gmail.com", "role"=>"Member", "gender"=>"Female", "member_information"=>{"value"=>"github.com/bobbob"}}, "commit"=>"Create Member"}
+Unpermitted parameters: member_information
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", Mon, 13 Jan 2014 15:50:07 UTC +00:00], ["email", "bobsmith@gmail.com"], ["first_name", "bob"], ["gender", "Female"], ["last_name", "smith"], ["role", "Member"], ["updated_at", Mon, 13 Jan 2014 15:50:07 UTC +00:00]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/members/3
+Completed 302 Found in 16ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/members/3" for 127.0.0.1 at 2014-01-13 10:50:07 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMember Load (0.4ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."id" = $1 LIMIT 1[0m  [["id", "3"]]
+  Rendered members/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 10:50:07 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 10:50:07 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 10:50:07 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 10:50:07 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 10:50:07 -0500
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-13 10:55:58 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LdEvUKhg+898sBdL1ANDzLfAThHVPntb6rw4BlIOrz8=", "member"=>{"first_name"=>"sdklfjsl", "last_name"=>"sdkfljdsklf", "email"=>"dsfhlks@gmail.com", "role"=>"Member", "gender"=>"Female", "member_information"=>{"value"=>"github.com/kljsdfjesgjso"}}, "commit"=>"Create Member"}
+Unpermitted parameters: member_information
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", Mon, 13 Jan 2014 15:55:58 UTC +00:00], ["email", "dsfhlks@gmail.com"], ["first_name", "sdklfjsl"], ["gender", "Female"], ["last_name", "sdkfljdsklf"], ["role", "Member"], ["updated_at", Mon, 13 Jan 2014 15:55:58 UTC +00:00]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/members/4
+Completed 302 Found in 18ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/members/4" for 127.0.0.1 at 2014-01-13 10:55:58 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mMember Load (0.4ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  Rendered members/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 10:55:58 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 10:55:58 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 10:55:58 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 10:55:58 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 10:55:58 -0500
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-13 11:00:11 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LdEvUKhg+898sBdL1ANDzLfAThHVPntb6rw4BlIOrz8=", "member"=>{"first_name"=>"sally", "last_name"=>"sue", "email"=>"sue@gmail.cpom", "role"=>"Member", "gender"=>"Female", "member_information"=>{"value"=>"github.com/sallysue"}}, "commit"=>"Create Member"}
+Unpermitted parameters: member_information
+Completed 400 Bad Request in 5ms
+
+ActionController::ParameterMissing (param not found: member_information):
+  app/controllers/members_controller.rb:29:in `member_params'
+  app/controllers/members_controller.rb:12:in `create'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.2ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-13 11:00:25 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LdEvUKhg+898sBdL1ANDzLfAThHVPntb6rw4BlIOrz8=", "member"=>{"first_name"=>"sally", "last_name"=>"sue", "email"=>"sue@gmail.cpom", "role"=>"Member", "gender"=>"Female", "member_information"=>{"value"=>"github.com/sallysue"}}, "commit"=>"Create Member"}
+Unpermitted parameters: member_information
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", Mon, 13 Jan 2014 16:00:25 UTC +00:00], ["email", "sue@gmail.cpom"], ["first_name", "sally"], ["gender", "Female"], ["last_name", "sue"], ["role", "Member"], ["updated_at", Mon, 13 Jan 2014 16:00:25 UTC +00:00]]
+  [1m[35m (4.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/members/5
+Completed 302 Found in 22ms (ActiveRecord: 6.6ms)
+
+
+Started GET "/members/5" for 127.0.0.1 at 2014-01-13 11:00:25 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."id" = $1 LIMIT 1[0m  [["id", "5"]]
+  Rendered members/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 11:00:25 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:25 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:26 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:26 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:26 -0500
+
+
+Started GET "/members" for 127.0.0.1 at 2014-01-13 11:00:39 -0500
+Processing by MembersController#index as HTML
+  Rendered members/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 11:00:39 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:39 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:39 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:39 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:39 -0500
+
+
+Started GET "/guess_who" for 127.0.0.1 at 2014-01-13 11:00:44 -0500
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 11:00:44 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:44 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:44 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:44 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:44 -0500
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-13 11:00:46 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/guess_who" for 127.0.0.1 at 2014-01-13 11:00:49 -0500
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 11:00:49 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:49 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:49 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:49 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 11:00:49 -0500
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-13 11:00:50 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/guess_who" for 127.0.0.1 at 2014-01-13 11:03:25 -0500
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 11:03:25 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 11:03:25 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 11:03:25 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 11:03:25 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 11:03:25 -0500
+
+
+Started GET "/auth/github" for 127.0.0.1 at 2014-01-13 11:03:38 -0500
+(github) Request phase initiated.
+
+
+Started GET "/auth/github" for 127.0.0.1 at 2014-01-13 11:03:38 -0500
+(github) Request phase initiated.
+
+
+Started GET "/auth/github/callback?code=d9a80c58cf3bc28a67c3&state=4b01afa71be8bc9b4a3dcb298cd8fb269723d99c3ca1a5d5" for 127.0.0.1 at 2014-01-13 11:03:42 -0500
+(github) Callback phase initiated.
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"d9a80c58cf3bc28a67c3", "state"=>"4b01afa71be8bc9b4a3dcb298cd8fb269723d99c3ca1a5d5", "provider"=>"github"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."provider" = 'github' AND "users"."uid" = '5490993' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."uid" = '5490993' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 23ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-13 11:03:43 -0500
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 11:03:43 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 11:03:43 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 11:03:43 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 11:03:43 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 11:03:43 -0500
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-13 11:03:52 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-13 11:04:27 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gXl0V9j66XmSlHGgAjwnZKgGIq4fu9nXScSSqMOndzk=", "member"=>{"first_name"=>"Johnny", "last_name"=>"Smith", "email"=>"jsmith@gmail.com", "role"=>"Member", "gender"=>"Male", "member_information"=>{"value"=>"github.com/jsmith"}}, "commit"=>"Create Member"}
+Unpermitted parameters: member_information
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", Mon, 13 Jan 2014 16:04:27 UTC +00:00], ["email", "jsmith@gmail.com"], ["first_name", "Johnny"], ["gender", "Male"], ["last_name", "Smith"], ["role", "Member"], ["updated_at", Mon, 13 Jan 2014 16:04:27 UTC +00:00]]
+  [1m[35m (5.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/members/6
+Completed 302 Found in 11ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/members/6" for 127.0.0.1 at 2014-01-13 11:04:27 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT "members".* FROM "members" WHERE "members"."id" = $1 LIMIT 1[0m  [["id", "6"]]
+  Rendered members/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 11:04:27 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 11:04:27 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 11:04:27 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 11:04:27 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 11:04:27 -0500

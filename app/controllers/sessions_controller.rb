@@ -41,6 +41,19 @@ raw_info: !ruby/hash:OmniAuth::AuthHash
     owned_private_repos: 2
     disk_usage: 2890
     collaborators: 7
+----------------
+[
+  {
+    "login": "LaunchAcademy",
+    "id": 3612691,
+    "url": "https://api.github.com/orgs/LaunchAcademy",
+    "repos_url": "https://api.github.com/orgs/LaunchAcademy/repos",
+    "events_url": "https://api.github.com/orgs/LaunchAcademy/events",
+    "members_url": "https://api.github.com/orgs/LaunchAcademy/members{/member}",
+    "public_members_url": "https://api.github.com/orgs/LaunchAcademy/public_members{/member}",
+    "avatar_url": "https://gravatar.com/avatar/3996dda93bb2ce2013929378c9ecff8d?d=https%3A%2F%2Fidenticons.github.com%2F4b3a0506bdae82443985db57027b99ba.png&r=x"
+  }
+]
 =end
 
 class SessionsController < ApplicationController
