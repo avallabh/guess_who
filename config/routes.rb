@@ -1,7 +1,10 @@
 GuessWhoAgain::Application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
 
-  resources :members
+  resources :members do
+    resources :member_identities
+  end
+
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   resources :guess_who

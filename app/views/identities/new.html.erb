@@ -1,0 +1,45 @@
+<h1>Add your member information:</h1>
+
+<%= notice %>
+
+<!--
+ simple_form_for @review, url: url_for(action: 'create', controller: 'reviews', method: 'post') do |f|
+-->
+<%= form_for @identity, url: url_for(action: 'create', controller: 'identities', method: 'post') do |f| %>
+<% if @identity.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+  <ul>
+    <% @identity.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<p>
+  <%= f.label :member_id %>
+  <%= f.collection_select(:member_id, Member.all, :id, :email, {include_blank: true} ) %>
+</p>
+<p>
+  <%= f.label :key, 'GitHub'%>
+  <%= f.text_field :value, size: 35, placeholder: 'http://github.com/USERNAME' %>
+</p>
+<p>
+  <%= f.label :key, 'LinkedIn' %>
+  <%= f.text_field :value %>
+</p>
+<p>
+  <%= f.label :key, 'Twitter' %>
+  <%= f.text_field :value %>
+</p>
+<p>
+  <%= f.label :key, 'Hometown' %>
+  <%= f.text_field :value %>
+</p>
+<p>
+  <%= f.label :key, 'Interests' %>
+  <%= f.text_field :value %>
+</p>
+<%= f.submit 'Add Member Information' %>
+<% end %>

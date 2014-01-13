@@ -931,3 +931,2228 @@ Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 11:04:27 
 
 
 Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 11:04:27 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to ChangeNameOfTable (20140113182040)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "member_informations" RENAME TO "member_identities"[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "member_informations_id_seq" RENAME TO "member_identities_id_seq"
+  [1m[36m (0.2ms)[0m  [1mALTER INDEX "index_member_informations_on_member_id" RENAME TO "index_member_identities_on_member_id"[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140113182040"]]
+  [1m[36m (4.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (120.6ms)[0m  [1mDROP DATABASE IF EXISTS "guess_who_again_test"[0m
+  [1m[35m (442.9ms)[0m  CREATE DATABASE "guess_who_again_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.5ms)[0m  CREATE TABLE "member_identities" ("id" serial primary key, "key" character varying(255) NOT NULL, "value" character varying(255) NOT NULL, "member_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.9ms)[0m  [1mCREATE INDEX "index_member_identities_on_member_id" ON "member_identities" USING btree ("member_id")[0m
+  [1m[35m (3.1ms)[0m  CREATE TABLE "members" ("id" serial primary key, "first_name" character varying(255) NOT NULL, "last_name" character varying(255) NOT NULL, "role" character varying(255) NOT NULL, "email" character varying(255) NOT NULL, "gender" character varying(255) NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "uid" character varying(255) NOT NULL, "name" character varying(255) NOT NULL, "display_name" character varying(255), "created_at" timestamp, "updated_at" timestamp, "provider" character varying(255)) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_uid" ON "users" USING btree ("uid")
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140113182040')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140109203232')[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140110194537')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140110194751')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140111023925')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140111040924')[0m
+
+
+Started GET "/re" for 127.0.0.1 at 2014-01-13 13:24:30 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/re"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.3ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (38.5ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.accordion.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.3ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (30.0ms)
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.abide.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.2ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (61.4ms)
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (32.2ms)
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.alert.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (27.6ms)
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.clearing.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (27.5ms)
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.dropdown.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (27.7ms)
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.interchange.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.1ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (28.0ms)
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.joyride.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.7ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (26.4ms)
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.magellan.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.7ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (27.1ms)
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.offcanvas.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.4ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (31.5ms)
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.orbit.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (26.9ms)
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.reveal.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (29.0ms)
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.tab.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (40.7ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (66.1ms)
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.tooltip.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (26.5ms)
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation/foundation.topbar.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.6ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (26.4ms)
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:51 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/foundation.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.7ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (26.3ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:51 -0500
+
+
+Started GET "/assets/google_maps.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:51 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/google_maps.js"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.1ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (32.4ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:51 -0500
+
+
+Started GET "/guess_who" for 127.0.0.1 at 2014-01-13 13:24:54 -0500
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 43ms (Views: 27.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 13:24:54 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:54 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:54 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 13:24:54 -0500
+
+
+Started GET "/guess_wh" for 127.0.0.1 at 2014-01-13 13:26:24 -0500
+
+ActionController::RoutingError (No route matches [GET] "/guess_wh"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (28.3ms)
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-13 13:43:43 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 38ms (Views: 21.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/members/" for 127.0.0.1 at 2014-01-13 13:43:45 -0500
+Processing by MembersController#index as HTML
+  Rendered members/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 13:43:45 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 13:43:45 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 13:43:45 -0500
+
+
+Started GET "/members/" for 127.0.0.1 at 2014-01-13 13:43:50 -0500
+Processing by MembersController#index as HTML
+  Rendered members/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 13:43:50 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 13:43:50 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 13:43:50 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 13:43:50 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 13:43:50 -0500
+
+
+Started GET "/guess_who" for 127.0.0.1 at 2014-01-13 13:43:55 -0500
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:04:12 -0500
+
+LoadError (Unable to autoload constant MemberIdentitiesController, expected /Users/ajayvallabh/Dropbox/launchacademy/delta/guess_who/app/controllers/member_identities_controller.rb to define it):
+  activesupport (4.0.2) lib/active_support/dependencies.rb:464:in `load_missing_constant'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:184:in `const_missing'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:226:in `const_get'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:226:in `block in constantize'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `each'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `inject'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `constantize'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:535:in `get'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:566:in `constantize'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:76:in `controller_reference'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:66:in `controller'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:44:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  omniauth (1.1.4) lib/omniauth/strategy.rb:184:in `call!'
+  omniauth (1.1.4) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.1.4) lib/omniauth/builder.rb:49:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__4338405863804006371__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.8ms)
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:04:56 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+Completed 500 Internal Server Error in 3ms
+
+NameError (uninitialized constant MemberIdentitiesController::MemberIdentity):
+  app/controllers/member_identities_controller.rb:7:in `new'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.7ms)
+
+
+Started GET "/members/1/member_identities/" for 127.0.0.1 at 2014-01-13 14:05:06 -0500
+Processing by MemberIdentitiesController#index as HTML
+  Parameters: {"member_id"=>"1"}
+Completed 500 Internal Server Error in 3ms
+
+NameError (uninitialized constant MemberIdentitiesController::MemberIdentity):
+  app/controllers/member_identities_controller.rb:3:in `index'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.2ms)
+
+
+Started GET "/members/1/member_identities/" for 127.0.0.1 at 2014-01-13 14:05:43 -0500
+Processing by MemberIdentitiesController#index as HTML
+  Parameters: {"member_id"=>"1"}
+  Rendered member_identities/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 7ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:05:43 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:05:43 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:05:43 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:05:43 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:05:43 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:05:47 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+ERROR: compiling _app_views_member_identities_new_html_erb___3927021969357376692_70241514200960 RAISED /Users/ajayvallabh/Dropbox/launchacademy/delta/guess_who/app/views/member_identities/new.html.erb:52: syntax error, unexpected keyword_ensure, expecting end-of-input
+Function body:           def _app_views_member_identities_new_html_erb___3927021969357376692_70241514200960(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "member_identities/new";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_append='<h1>Add your member information:</h1>
+
+';@output_buffer.append=( notice );@output_buffer.safe_append='
+
+';@output_buffer.append=  form_for @member_identity do |f| @output_buffer.safe_append='
+'; if @member_identity.errors.any? 
+@output_buffer.safe_append='<div id="error_explanation">
+  <h2>';@output_buffer.append=( pluralize(@member_identity.errors.count, "error") );@output_buffer.safe_append=' prohibited this event from being saved:</h2>
+
+  <ul>
+';     @member_identity.errors.full_messages.each do |msg| 
+@output_buffer.safe_append='    <li>';@output_buffer.append=( msg );@output_buffer.safe_append='</li>
+';     end 
+@output_buffer.safe_append='  </ul>
+</div>
+'; end 
+@output_buffer.safe_append='<p>
+  ';@output_buffer.append=( f.label :member_id );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.collection_select(:member_id, Member.all, :id, :email, {include_blank: true} ) );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'GitHub', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'LinkedIn', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'Twitter', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'Hometown', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'Interests', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+'; end 
+@output_buffer.safe_append='<!--
+"github" => {url: \'http://gihtub.com/\'},
+    "twitter" => {url: \'http://twitter.com\'},
+    "linkedin" => {url: \'http://www.linkedin.com/in/\'},
+    "hometown" => nil,
+    "interests" => nil -->
+
+    ';@output_buffer.append=( f.submit );@output_buffer.safe_append='
+';     end 
+@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:299:in `module_eval'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:299:in `compile'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:248:in `block in compile!'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:236:in `synchronize'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:236:in `compile!'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:142:in `block in render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:161:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:141:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `block in instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:17:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/renderer.rb:42:in `render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/renderer.rb:23:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:127:in `_render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/streaming.rb:219:in `_render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:120:in `render_to_body'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:97:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/core_ext/benchmark.rb:12:in `ms'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:189:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:403:in `_run__2221878190159935036__process_action__callbacks'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `block in instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:136:in `process'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:44:in `process'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal.rb:195:in `dispatch'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal.rb:231:in `block in action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:80:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:48:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:71:in `block in call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:59:in `each'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:59:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:680:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/omniauth-1.1.4/lib/omniauth/strategy.rb:184:in `call!'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/omniauth-1.1.4/lib/omniauth/strategy.rb:164:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/omniauth-1.1.4/lib/omniauth/builder.rb:49:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/etag.rb:23:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/conditionalget.rb:25:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/head.rb:11:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/flash.rb:241:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:225:in `context'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:220:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/cookies.rb:486:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/query_cache.rb:36:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/migration.rb:369:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:373:in `_run__4338405863804006371__call__callbacks'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/reloader.rb:64:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/rack/logger.rb:38:in `call_app'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/rack/logger.rb:20:in `block in call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:67:in `block in tagged'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:25:in `tagged'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:67:in `tagged'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/rack/logger.rb:20:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/static.rb:64:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/engine.rb:511:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/application.rb:97:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+/Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+/Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+/Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+  Rendered member_identities/new.html.erb within layouts/application (3.7ms)
+Completed 500 Internal Server Error in 8ms
+
+ActionView::Template::Error (/Users/ajayvallabh/Dropbox/launchacademy/delta/guess_who/app/views/member_identities/new.html.erb:52: syntax error, unexpected keyword_ensure, expecting end-of-input):
+    49:     <%= f.submit %>
+    50:     <% end %>
+  actionpack (4.0.2) lib/action_view/template.rb:299:in `module_eval'
+  actionpack (4.0.2) lib/action_view/template.rb:299:in `compile'
+  actionpack (4.0.2) lib/action_view/template.rb:248:in `block in compile!'
+  actionpack (4.0.2) lib/action_view/template.rb:236:in `synchronize'
+  actionpack (4.0.2) lib/action_view/template.rb:236:in `compile!'
+  actionpack (4.0.2) lib/action_view/template.rb:142:in `block in render'
+  activesupport (4.0.2) lib/active_support/notifications.rb:161:in `instrument'
+  actionpack (4.0.2) lib/action_view/template.rb:141:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+  actionpack (4.0.2) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.2) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.2) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:403:in `_run__2221878190159935036__process_action__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.2) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  omniauth (1.1.4) lib/omniauth/strategy.rb:184:in `call!'
+  omniauth (1.1.4) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.1.4) lib/omniauth/builder.rb:49:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__4338405863804006371__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.6ms)
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:06:10 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  Rendered member_identities/new.html.erb within layouts/application (14.7ms)
+Completed 500 Internal Server Error in 17ms
+
+ActionView::Template::Error (undefined method `member_identities_path' for #<#<Class:0x007fc4bbeb57f8>:0x007fc4beac4268>):
+    2: 
+    3: <%= notice %>
+    4: 
+    5: <%= form_for @member_identity do |f| %>
+    6: <% if @member_identity.errors.any? %>
+    7: <div id="error_explanation">
+    8:   <h2><%= pluralize(@member_identity.errors.count, "error") %> prohibited this event from being saved:</h2>
+  app/views/member_identities/new.html.erb:5:in `_app_views_member_identities_new_html_erb___3927021969357376692_70241494662200'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.8ms)
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:06:39 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  Rendered member_identities/new.html.erb within layouts/application (10.4ms)
+Completed 500 Internal Server Error in 13ms
+
+ActionView::Template::Error (undefined method `member_identities_path' for #<#<Class:0x007fc4bbeb57f8>:0x007fc4bad27928>):
+    2: 
+    3: <%= notice %>
+    4: 
+    5: <%= form_for([@member, @member_identity]) do |f| %>
+    6: <% if @member_identity.errors.any? %>
+    7: <div id="error_explanation">
+    8:   <h2><%= pluralize(@member_identity.errors.count, "error") %> prohibited this event from being saved:</h2>
+  app/views/member_identities/new.html.erb:5:in `_app_views_member_identities_new_html_erb___3927021969357376692_70241462379380'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.4ms)
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:08:58 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[35mMember Load (0.5ms)[0m  SELECT "members".* FROM "members"
+  Rendered member_identities/new.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 22ms (Views: 19.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:08:58 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:08:58 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:08:58 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:08:58 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:08:58 -0500
+
+
+Started GET "/members/1/member_identities/" for 127.0.0.1 at 2014-01-13 14:09:20 -0500
+Processing by MemberIdentitiesController#index as HTML
+  Parameters: {"member_id"=>"1"}
+  Rendered member_identities/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:09:20 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:09:20 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:09:20 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:09:20 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:09:20 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:10:08 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+ERROR: compiling _app_views_member_identities_new_html_erb___3927021969357376692_70241514687740 RAISED /Users/ajayvallabh/Dropbox/launchacademy/delta/guess_who/app/views/member_identities/new.html.erb:44: syntax error, unexpected tLABEL, expecting '='
+...uffer.append=( f.submit, label: 'test' );@output_buffer.safe...
+...                               ^
+Function body:           def _app_views_member_identities_new_html_erb___3927021969357376692_70241514687740(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "member_identities/new";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_append='<h1>Add your member information:</h1>
+
+';@output_buffer.append=( notice );@output_buffer.safe_append='
+
+<!--
+ simple_form_for @review, url: url_for(action: \'create\', controller: \'reviews\', method: \'post\') do |f|
+-->
+';@output_buffer.append=  form_for @member_identity, url: url_for(action: 'create', controller: 'member_identities', method: 'post') do |f| @output_buffer.safe_append='
+'; if @member_identity.errors.any? 
+@output_buffer.safe_append='<div id="error_explanation">
+  <h2>';@output_buffer.append=( pluralize(@member_identity.errors.count, "error") );@output_buffer.safe_append=' prohibited this event from being saved:</h2>
+
+  <ul>
+';     @member_identity.errors.full_messages.each do |msg| 
+@output_buffer.safe_append='    <li>';@output_buffer.append=( msg );@output_buffer.safe_append='</li>
+';     end 
+@output_buffer.safe_append='  </ul>
+</div>
+'; end 
+@output_buffer.safe_append='<p>
+  ';@output_buffer.append=( f.label :member_id );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.collection_select(:member_id, Member.all, :id, :email, {include_blank: true} ) );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'GitHub', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'LinkedIn', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'Twitter', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'Hometown', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'Interests', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+';@output_buffer.append=( f.submit, label: 'test' );@output_buffer.safe_append='
+'; end 
+@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:299:in `module_eval'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:299:in `compile'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:248:in `block in compile!'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:236:in `synchronize'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:236:in `compile!'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:142:in `block in render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:161:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:141:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `block in instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:17:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/renderer.rb:42:in `render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/renderer.rb:23:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:127:in `_render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/streaming.rb:219:in `_render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:120:in `render_to_body'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:97:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/core_ext/benchmark.rb:12:in `ms'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:189:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:403:in `_run__2221878190159935036__process_action__callbacks'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `block in instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:136:in `process'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:44:in `process'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal.rb:195:in `dispatch'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal.rb:231:in `block in action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:80:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:48:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:71:in `block in call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:59:in `each'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:59:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:680:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/omniauth-1.1.4/lib/omniauth/strategy.rb:184:in `call!'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/omniauth-1.1.4/lib/omniauth/strategy.rb:164:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/omniauth-1.1.4/lib/omniauth/builder.rb:49:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/etag.rb:23:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/conditionalget.rb:25:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/head.rb:11:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/flash.rb:241:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:225:in `context'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:220:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/cookies.rb:486:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/query_cache.rb:36:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/migration.rb:369:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:373:in `_run__4338405863804006371__call__callbacks'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/reloader.rb:64:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/rack/logger.rb:38:in `call_app'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/rack/logger.rb:20:in `block in call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:67:in `block in tagged'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:25:in `tagged'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:67:in `tagged'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/rack/logger.rb:20:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/static.rb:64:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/engine.rb:511:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/application.rb:97:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+/Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+/Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+/Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+  Rendered member_identities/new.html.erb within layouts/application (6.8ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (/Users/ajayvallabh/Dropbox/launchacademy/delta/guess_who/app/views/member_identities/new.html.erb:44: syntax error, unexpected tLABEL, expecting '='
+...uffer.append=( f.submit, label: 'test' );@output_buffer.safe...
+...                               ^):
+    41:   <%= f.label :key, 'Interests', readonly: true %>
+    42:   <%= f.text_field :value %>
+    43: </p>
+    44: <%= f.submit, label: 'test' %>
+    45: <% end %>
+  actionpack (4.0.2) lib/action_view/template.rb:299:in `module_eval'
+  actionpack (4.0.2) lib/action_view/template.rb:299:in `compile'
+  actionpack (4.0.2) lib/action_view/template.rb:248:in `block in compile!'
+  actionpack (4.0.2) lib/action_view/template.rb:236:in `synchronize'
+  actionpack (4.0.2) lib/action_view/template.rb:236:in `compile!'
+  actionpack (4.0.2) lib/action_view/template.rb:142:in `block in render'
+  activesupport (4.0.2) lib/active_support/notifications.rb:161:in `instrument'
+  actionpack (4.0.2) lib/action_view/template.rb:141:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+  actionpack (4.0.2) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.2) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.2) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:403:in `_run__2221878190159935036__process_action__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.2) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  omniauth (1.1.4) lib/omniauth/strategy.rb:184:in `call!'
+  omniauth (1.1.4) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.1.4) lib/omniauth/builder.rb:49:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__4338405863804006371__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.3ms)
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:10:13 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+ERROR: compiling _app_views_member_identities_new_html_erb___3927021969357376692_70241493554860 RAISED /Users/ajayvallabh/Dropbox/launchacademy/delta/guess_who/app/views/member_identities/new.html.erb:44: syntax error, unexpected ')', expecting :: or '[' or '.'
+...fer.append=( f.submit, 'test' );@output_buffer.safe_append='
+...                               ^
+/Users/ajayvallabh/Dropbox/launchacademy/delta/guess_who/app/views/member_identities/new.html.erb:45: syntax error, unexpected keyword_end, expecting ')'
+'; end 
+      ^
+/Users/ajayvallabh/Dropbox/launchacademy/delta/guess_who/app/views/member_identities/new.html.erb:47: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/ajayvallabh/Dropbox/launchacademy/delta/guess_who/app/views/member_identities/new.html.erb:49: syntax error, unexpected keyword_end, expecting ')'
+Function body:           def _app_views_member_identities_new_html_erb___3927021969357376692_70241493554860(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "member_identities/new";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_append='<h1>Add your member information:</h1>
+
+';@output_buffer.append=( notice );@output_buffer.safe_append='
+
+<!--
+ simple_form_for @review, url: url_for(action: \'create\', controller: \'reviews\', method: \'post\') do |f|
+-->
+';@output_buffer.append=  form_for @member_identity, url: url_for(action: 'create', controller: 'member_identities', method: 'post') do |f| @output_buffer.safe_append='
+'; if @member_identity.errors.any? 
+@output_buffer.safe_append='<div id="error_explanation">
+  <h2>';@output_buffer.append=( pluralize(@member_identity.errors.count, "error") );@output_buffer.safe_append=' prohibited this event from being saved:</h2>
+
+  <ul>
+';     @member_identity.errors.full_messages.each do |msg| 
+@output_buffer.safe_append='    <li>';@output_buffer.append=( msg );@output_buffer.safe_append='</li>
+';     end 
+@output_buffer.safe_append='  </ul>
+</div>
+'; end 
+@output_buffer.safe_append='<p>
+  ';@output_buffer.append=( f.label :member_id );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.collection_select(:member_id, Member.all, :id, :email, {include_blank: true} ) );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'GitHub', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'LinkedIn', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'Twitter', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'Hometown', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+<p>
+  ';@output_buffer.append=( f.label :key, 'Interests', readonly: true );@output_buffer.safe_append='
+  ';@output_buffer.append=( f.text_field :value );@output_buffer.safe_append='
+</p>
+';@output_buffer.append=( f.submit, 'test' );@output_buffer.safe_append='
+'; end 
+@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:299:in `module_eval'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:299:in `compile'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:248:in `block in compile!'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:236:in `synchronize'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:236:in `compile!'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:142:in `block in render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:161:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/template.rb:141:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `block in instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:17:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/renderer.rb:42:in `render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_view/renderer/renderer.rb:23:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:127:in `_render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/streaming.rb:219:in `_render_template'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:120:in `render_to_body'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:97:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/core_ext/benchmark.rb:12:in `ms'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:189:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:403:in `_run__2221878190159935036__process_action__callbacks'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `block in instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `instrument'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:136:in `process'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:44:in `process'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal.rb:195:in `dispatch'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_controller/metal.rb:231:in `block in action'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:80:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:48:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:71:in `block in call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:59:in `each'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:59:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:680:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/omniauth-1.1.4/lib/omniauth/strategy.rb:184:in `call!'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/omniauth-1.1.4/lib/omniauth/strategy.rb:164:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/omniauth-1.1.4/lib/omniauth/builder.rb:49:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/etag.rb:23:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/conditionalget.rb:25:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/head.rb:11:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/flash.rb:241:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:225:in `context'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:220:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/cookies.rb:486:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/query_cache.rb:36:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activerecord-4.0.2/lib/active_record/migration.rb:369:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:373:in `_run__4338405863804006371__call__callbacks'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/reloader.rb:64:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/rack/logger.rb:38:in `call_app'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/rack/logger.rb:20:in `block in call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:67:in `block in tagged'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:25:in `tagged'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:67:in `tagged'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/rack/logger.rb:20:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/activesupport-4.0.2/lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/static.rb:64:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/engine.rb:511:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.2/lib/rails/application.rb:97:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+/Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+/Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+/Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+/Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+  Rendered member_identities/new.html.erb within layouts/application (6.6ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (/Users/ajayvallabh/Dropbox/launchacademy/delta/guess_who/app/views/member_identities/new.html.erb:44: syntax error, unexpected ')', expecting :: or '[' or '.'
+...fer.append=( f.submit, 'test' );@output_buffer.safe_append='
+...                               ^
+/Users/ajayvallabh/Dropbox/launchacademy/delta/guess_who/app/views/member_identities/new.html.erb:45: syntax error, unexpected keyword_end, expecting ')'
+'; end 
+      ^
+/Users/ajayvallabh/Dropbox/launchacademy/delta/guess_who/app/views/member_identities/new.html.erb:47: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/ajayvallabh/Dropbox/launchacademy/delta/guess_who/app/views/member_identities/new.html.erb:49: syntax error, unexpected keyword_end, expecting ')'):
+    41:   <%= f.label :key, 'Interests', readonly: true %>
+    42:   <%= f.text_field :value %>
+    43: </p>
+    44: <%= f.submit, 'test' %>
+    45: <% end %>
+  actionpack (4.0.2) lib/action_view/template.rb:299:in `module_eval'
+  actionpack (4.0.2) lib/action_view/template.rb:299:in `compile'
+  actionpack (4.0.2) lib/action_view/template.rb:248:in `block in compile!'
+  actionpack (4.0.2) lib/action_view/template.rb:236:in `synchronize'
+  actionpack (4.0.2) lib/action_view/template.rb:236:in `compile!'
+  actionpack (4.0.2) lib/action_view/template.rb:142:in `block in render'
+  activesupport (4.0.2) lib/active_support/notifications.rb:161:in `instrument'
+  actionpack (4.0.2) lib/action_view/template.rb:141:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+  actionpack (4.0.2) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.2) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.2) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:403:in `_run__2221878190159935036__process_action__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.2) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  omniauth (1.1.4) lib/omniauth/strategy.rb:184:in `call!'
+  omniauth (1.1.4) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.1.4) lib/omniauth/builder.rb:49:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__4338405863804006371__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/ajayvallabh/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/ajayvallabh/.rvm/gems/ruby-2.0.0-p247@global/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.2ms)
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:10:16 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[36mMember Load (0.4ms)[0m  [1mSELECT "members".* FROM "members"[0m
+  Rendered member_identities/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:10:16 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:16 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:16 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:16 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:16 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:10:21 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[35mMember Load (0.3ms)[0m  SELECT "members".* FROM "members"
+  Rendered member_identities/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:10:21 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:21 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:21 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:21 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:21 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:10:24 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT "members".* FROM "members"[0m
+  Rendered member_identities/new.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:10:24 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:24 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:24 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:24 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:24 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:10:38 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[35mMember Load (0.4ms)[0m  SELECT "members".* FROM "members"
+  Rendered member_identities/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:10:38 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:38 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:38 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:38 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:38 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:10:46 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[36mMember Load (0.4ms)[0m  [1mSELECT "members".* FROM "members"[0m
+  Rendered member_identities/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:10:46 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:46 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:46 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:46 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:46 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:10:53 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[35mMember Load (0.4ms)[0m  SELECT "members".* FROM "members"
+  Rendered member_identities/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:10:53 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:53 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:53 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:53 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:10:53 -0500
+
+
+Started POST "/members/1/member_identities?method=post" for 127.0.0.1 at 2014-01-13 14:11:40 -0500
+Processing by MemberIdentitiesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gXl0V9j66XmSlHGgAjwnZKgGIq4fu9nXScSSqMOndzk=", "member_identity"=>{"member_id"=>"1", "value"=>"Eating"}, "commit"=>"Add Member Information", "method"=>"post", "member_id"=>"1"}
+Unpermitted parameters: member_id
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT "members".* FROM "members"[0m
+  Rendered member_identities/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 11ms (Views: 7.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:11:40 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:11:40 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:11:40 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:11:40 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:11:40 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:12:46 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[35mMember Load (0.3ms)[0m  SELECT "members".* FROM "members"
+  Rendered member_identities/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:12:46 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:12:46 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:12:46 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:12:46 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:12:46 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:14:00 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[36mMember Load (0.4ms)[0m  [1mSELECT "members".* FROM "members"[0m
+  Rendered member_identities/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:14:00 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:00 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:00 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:00 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:00 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:14:11 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[35mMember Load (0.4ms)[0m  SELECT "members".* FROM "members"
+  Rendered member_identities/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:14:11 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:11 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:11 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:11 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:11 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:14:12 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT "members".* FROM "members"[0m
+  Rendered member_identities/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:14:12 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:12 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:12 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:12 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:12 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:14:12 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[35mMember Load (0.3ms)[0m  SELECT "members".* FROM "members"
+  Rendered member_identities/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:14:12 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:12 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:12 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:12 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:12 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:14:21 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[36mMember Load (0.4ms)[0m  [1mSELECT "members".* FROM "members"[0m
+  Rendered member_identities/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:14:21 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:21 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:21 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:21 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:21 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:14:36 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[35mMember Load (0.4ms)[0m  SELECT "members".* FROM "members"
+  Rendered member_identities/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 50ms (Views: 48.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:14:36 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:36 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:36 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:36 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:14:36 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:15:48 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT "members".* FROM "members"[0m
+  Rendered member_identities/new.html.erb within layouts/application (20.3ms)
+Completed 200 OK in 29ms (Views: 22.6ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:15:48 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:15:48 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:15:48 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:15:48 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:15:48 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:15:52 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[35mMember Load (0.4ms)[0m  SELECT "members".* FROM "members"
+  Rendered member_identities/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:15:52 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:15:52 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:15:52 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:15:52 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:15:52 -0500
+
+
+Started GET "/members/1/member_identities/new" for 127.0.0.1 at 2014-01-13 14:15:55 -0500
+Processing by MemberIdentitiesController#new as HTML
+  Parameters: {"member_id"=>"1"}
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT "members".* FROM "members"[0m
+  Rendered member_identities/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-13 14:15:55 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-13 14:15:55 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-13 14:15:55 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-13 14:15:55 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-13 14:15:55 -0500
