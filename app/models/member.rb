@@ -8,8 +8,7 @@ class Member < ActiveRecord::Base
   validates :email, presence:true, email:true
   validates :gender, inclusion: {in:GENDERS}, presence:true
 
-  belongs_to :user,
-    inverse_of: :members
+  has_many :identities
+  has_many :identity_types, through: :identities
 
-  has_many :member_informations
 end

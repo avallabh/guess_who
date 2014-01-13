@@ -34,18 +34,5 @@
   <%= f.radio_button :gender, "Female" %> <%= f.label :gender, "Female" %>
   <%= f.radio_button :gender, "Male" %> <%= f.label :gender, "Male" %>
 </p>
-<%= f.fields_for :member_information do |info| %>
-<p>
-  <%= info.label :key, 'GitHub' %>
-  <%= info.text_field :value %>
-</p>
-<% end %>
-<!--
-"github" => {url: 'http://gihtub.com/'},
-    "twitter" => {url: 'http://twitter.com'},
-    "linkedin" => {url: 'http://www.linkedin.com/in/'},
-    "hometown" => nil,
-    "interests" => nil -->
-
-  <%= f.submit %>
+<%= f.submit %>
 <% end %>

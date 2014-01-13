@@ -22,24 +22,14 @@
   <%= f.collection_select(:member_id, Member.all, :id, :email, {include_blank: true} ) %>
 </p>
 <p>
-  <%= f.label :key, 'GitHub'%>
-  <%= f.text_field :value, size: 35, placeholder: 'http://github.com/USERNAME' %>
+  <%= f.label :identity_type_id %>
+  <%= f.collection_select(:identity_type_id, IdentityType.all, :id, :identity_kind, {include_blank: true} ) %>
 </p>
 <p>
-  <%= f.label :key, 'LinkedIn' %>
+  <%= f.label :value, 'Enter Info' %>
   <%= f.text_field :value %>
 </p>
-<p>
-  <%= f.label :key, 'Twitter' %>
-  <%= f.text_field :value %>
-</p>
-<p>
-  <%= f.label :key, 'Hometown' %>
-  <%= f.text_field :value %>
-</p>
-<p>
-  <%= f.label :key, 'Interests' %>
-  <%= f.text_field :value %>
-</p>
+
+
 <%= f.submit 'Add Member Information' %>
 <% end %>
