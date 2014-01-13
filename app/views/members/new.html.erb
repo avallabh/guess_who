@@ -34,11 +34,12 @@
   <%= f.radio_button :gender, "Female" %> <%= f.label :gender, "Female" %>
   <%= f.radio_button :gender, "Male" %> <%= f.label :gender, "Male" %>
 </p>
+<%= f.fields_for :member_information do |info| %>
 <p>
-  <%= f.label :key, 'GitHub' %>
-  <%= f.text_field :value, placeholder: 'test' %>
+  <%= info.label :key, 'GitHub' %>
+  <%= info.text_field :value %>
 </p>
-
+<% end %>
 <!--
 "github" => {url: 'http://gihtub.com/'},
     "twitter" => {url: 'http://twitter.com'},
