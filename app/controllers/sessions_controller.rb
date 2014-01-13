@@ -4,7 +4,7 @@ uid: '5490993'
 info: !ruby/hash:OmniAuth::AuthHash::InfoHash
   nickname: avallabh
   email: ajay.vallabh@gmail.com
-  name:
+  name: Ajay Vallabh
   image: https://gravatar.com/avatar/3ae55fc2791395e3b0d29046537ca68c?d=https%3A%2F%2Fidenticons.github.com%2F5e9435c7ae8aca56fb88f9dbc1ce7d53.png&r=x
   urls: !ruby/hash:OmniAuth::AuthHash
     GitHub: https://github.com/avallabh
@@ -46,12 +46,21 @@ raw_info: !ruby/hash:OmniAuth::AuthHash
 class SessionsController < ApplicationController
 
   def index
-
   end
 
   def create
 # gets the hash of ALL INFO
 #    raise request.env["omniauth.auth"].to_yaml
+    auth = request.env["omniauth.auth"]
+    user = User.find_or_create_by(provider: auth["provider"], uid: auth["uid"]) #|| User.create_with_omniauth(auth)
+    #user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
+    session[:user_id] = user.id
     redirect_to root_path, notice: 'You have successfully signed in!'
   end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path, notice: 'You have successfully signed out!'
+  end
+
 end
