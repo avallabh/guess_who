@@ -4,20 +4,20 @@ FactoryGirl.define do
   factory :member do
     first_name "John"
     last_name "Smith"
-    role "student"
+    role "Member"
     sequence(:email) {|x| "test#{x}@email.com"}
-    gender "male"
+    gender "Male"
 
     trait :male do
       first_name   "John"
       last_name "Smith"
-      gender "male"
+      gender "Male"
     end
 
     trait :female do
       first_name  "Jane"
       last_name "Doe"
-      gender "female"
+      gender "Female"
     end
 
     factory :member_male,   traits: [:male]
@@ -26,13 +26,13 @@ FactoryGirl.define do
     trait :student do
       first_name   "John"
       last_name "Smith"
-      role "student"
+      role "Admin"
     end
 
     trait :staff do
       first_name  "Jane"
       last_name "Doe"
-      role "staff"
+      role "Admin"
     end
 
     factory :member_student,   traits: [:student]

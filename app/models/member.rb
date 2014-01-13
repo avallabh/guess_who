@@ -1,6 +1,6 @@
 class Member < ActiveRecord::Base
-  GENDERS = %w[male female]
-  ROLES = %w[student staff]
+  GENDERS = %w[Male Female]
+  ROLES = %w[Member Admin]
 
   validates :first_name, presence:true
   validates :last_name, presence:true

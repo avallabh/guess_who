@@ -1,6 +1,7 @@
 GuessWhoAgain::Application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
 
+  resources :members
   resources :guess_who
   root to: 'guess_who#index'
 

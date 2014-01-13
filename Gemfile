@@ -45,7 +45,6 @@ group :test, :development do
   gem 'capybara'
   gem 'pry-rails'
   gem 'dotenv-rails'
-  gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'spork-rails'
 end
