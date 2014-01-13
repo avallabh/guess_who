@@ -1,7 +1,9 @@
 <h1>INDEX PAGE</h1>
 
-<%# if user_signed_in %>
-  <%#= link_to 'Sign Out', 'url' %>
+<!-- Check for current user fails -->
+<%# if user.uid.exists? %>
+
+ <%#= link_to 'Sign Out', logout_path %>
 <%# else %>
   <%= link_to 'Sign In With GitHub', '/auth/github' %>
 <%# end %>
