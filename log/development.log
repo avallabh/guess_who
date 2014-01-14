@@ -4751,3 +4751,269 @@ Started GET "/" for 127.0.0.1 at 2014-01-14 10:56:15 -0500
 Processing by GuessWhoController#index as HTML
   Rendered guess_who/index.html.erb within layouts/application (0.8ms)
 Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (26.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to ChangingUidName (20140110194537)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.7ms)[0m  [1mALTER TABLE "users" RENAME COLUMN "github_uid" TO "uid"[0m
+  [1m[35m (2.7ms)[0m  ALTER INDEX "index_users_on_github_uid" RENAME TO "index_users_on_uid"
+  [1m[36mSQL (19.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140110194537"]]
+  [1m[35m (6.3ms)[0m  COMMIT
+Migrating to AddProvider (20140110194751)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (2.4ms)[0m  ALTER TABLE "users" ADD COLUMN "provider" character varying(255)
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140110194751"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to ChangeNameOfTable (20140113182040)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "member_informations" RENAME TO "member_identities"
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "member_informations_id_seq" RENAME TO "member_identities_id_seq"[0m
+  [1m[35m (0.2ms)[0m  ALTER INDEX "index_member_informations_on_member_id" RENAME TO "index_member_identities_on_member_id"
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140113182040"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Migrating to ChangeMemberIdentitiesTable (20140113200726)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "member_identities" RENAME TO "identities"
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "member_identities_id_seq" RENAME TO "identities_id_seq"[0m
+  [1m[35m (0.2ms)[0m  ALTER INDEX "index_member_identities_on_member_id" RENAME TO "index_identities_on_member_id"
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140113200726"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to ChangeColumnsInIdentities (20140113200852)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (2.7ms)[0m  ALTER TABLE "identities" DROP "key"
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "identities" ADD COLUMN "identity_type_id" integer[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140113200852"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateIdentityType (20140113203732)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (9.8ms)[0m  [1mCREATE TABLE "identity_types" ("id" serial primary key, "type" character varying(255)) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140113203732"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to RenameType (20140113204545)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "identity_types" RENAME COLUMN "type" TO "identity_kind"[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140113204545"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to AddPhotoUrlToMembers (20140114161930)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.7ms)[0m  [1mALTER TABLE "members" ADD COLUMN "photo_url" character varying(255) NOT NULL[0m
+PG::NotNullViolation: ERROR:  column "photo_url" contains null values
+: ALTER TABLE "members" ADD COLUMN "photo_url" character varying(255) NOT NULL
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (2.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20140109203232)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "github_uid" character varying(255) NOT NULL, "name" character varying(255) NOT NULL, "display_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_github_uid" ON "users" USING btree ("github_uid")
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140109203232"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Migrating to ChangingUidName (20140110194537)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" RENAME COLUMN "github_uid" TO "uid"
+  [1m[36m (0.2ms)[0m  [1mALTER INDEX "index_users_on_github_uid" RENAME TO "index_users_on_uid"[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140110194537"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to AddProvider (20140110194751)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD COLUMN "provider" character varying(255)[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140110194751"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateMembers (20140111023925)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "members" ("id" serial primary key, "first_name" character varying(255) NOT NULL, "last_name" character varying(255) NOT NULL, "role" character varying(255) NOT NULL, "email" character varying(255) NOT NULL, "gender" character varying(255) NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140111023925"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateMemberInformations (20140111040924)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "member_informations" ("id" serial primary key, "key" character varying(255) NOT NULL, "value" character varying(255) NOT NULL, "member_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.9ms)[0m  CREATE INDEX "index_member_informations_on_member_id" ON "member_informations" ("member_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140111040924"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Migrating to ChangeNameOfTable (20140113182040)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "member_informations" RENAME TO "member_identities"
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "member_informations_id_seq" RENAME TO "member_identities_id_seq"[0m
+  [1m[35m (0.2ms)[0m  ALTER INDEX "index_member_informations_on_member_id" RENAME TO "index_member_identities_on_member_id"
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140113182040"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to ChangeMemberIdentitiesTable (20140113200726)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "member_identities" RENAME TO "identities"
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "member_identities_id_seq" RENAME TO "identities_id_seq"[0m
+  [1m[35m (0.2ms)[0m  ALTER INDEX "index_member_identities_on_member_id" RENAME TO "index_identities_on_member_id"
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140113200726"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to ChangeColumnsInIdentities (20140113200852)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.8ms)[0m  ALTER TABLE "identities" DROP "key"
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "identities" ADD COLUMN "identity_type_id" integer[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140113200852"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateIdentityType (20140113203732)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "identity_types" ("id" serial primary key, "type" character varying(255)) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140113203732"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to RenameType (20140113204545)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "identity_types" RENAME COLUMN "type" TO "identity_kind"[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140113204545"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to AddPhotoUrlToMembers (20140114161930)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "members" ADD COLUMN "photo_url" character varying(255) NOT NULL[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140114161930"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to AddPhotoUrlToMembers (20140114161930)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.3ms)[0m  ALTER TABLE "members" DROP "photo_url"
+  [1m[36mSQL (1.3ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20140114161930'[0m
+  [1m[35m (6.2ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddPhotoUrlToMembers (20140114161930)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.1ms)[0m  [1mALTER TABLE "members" ADD COLUMN "photo_url" character varying(255) NOT NULL[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140114161930"]]
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (118.2ms)[0m  [1mDROP DATABASE IF EXISTS "guess_who_again_test"[0m
+  [1m[35m (248.4ms)[0m  CREATE DATABASE "guess_who_again_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.5ms)[0m  CREATE TABLE "identities" ("id" serial primary key, "value" character varying(255) NOT NULL, "member_id" integer, "created_at" timestamp, "updated_at" timestamp, "identity_type_id" integer) 
+  [1m[36m (1.1ms)[0m  [1mCREATE INDEX "index_identities_on_member_id" ON "identities" USING btree ("member_id")[0m
+  [1m[35m (2.3ms)[0m  CREATE TABLE "identity_types" ("id" serial primary key, "identity_kind" character varying(255)) 
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "members" ("id" serial primary key, "first_name" character varying(255) NOT NULL, "last_name" character varying(255) NOT NULL, "role" character varying(255) NOT NULL, "email" character varying(255) NOT NULL, "gender" character varying(255) NOT NULL, "created_at" timestamp, "updated_at" timestamp, "photo_url" character varying(255) NOT NULL) [0m
+  [1m[35m (2.9ms)[0m  CREATE TABLE "users" ("id" serial primary key, "uid" character varying(255) NOT NULL, "name" character varying(255) NOT NULL, "display_name" character varying(255), "created_at" timestamp, "updated_at" timestamp, "provider" character varying(255)) 
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_uid" ON "users" USING btree ("uid")[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140114161930')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140109203232')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140110194537')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140110194751')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140111023925')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140111040924')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140113182040')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140113200726')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140113200852')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140113203732')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140113204545')[0m
+  [1m[36m (119.2ms)[0m  [1mDROP DATABASE IF EXISTS "guess_who_again_test"[0m
+  [1m[35m (254.1ms)[0m  CREATE DATABASE "guess_who_again_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.6ms)[0m  CREATE TABLE "identities" ("id" serial primary key, "value" character varying(255) NOT NULL, "member_id" integer, "created_at" timestamp, "updated_at" timestamp, "identity_type_id" integer) 
+  [1m[36m (1.1ms)[0m  [1mCREATE INDEX "index_identities_on_member_id" ON "identities" USING btree ("member_id")[0m
+  [1m[35m (2.2ms)[0m  CREATE TABLE "identity_types" ("id" serial primary key, "identity_kind" character varying(255)) 
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "members" ("id" serial primary key, "first_name" character varying(255) NOT NULL, "last_name" character varying(255) NOT NULL, "role" character varying(255) NOT NULL, "email" character varying(255) NOT NULL, "gender" character varying(255) NOT NULL, "created_at" timestamp, "updated_at" timestamp, "photo_url" character varying(255) NOT NULL) [0m
+  [1m[35m (2.9ms)[0m  CREATE TABLE "users" ("id" serial primary key, "uid" character varying(255) NOT NULL, "name" character varying(255) NOT NULL, "display_name" character varying(255), "created_at" timestamp, "updated_at" timestamp, "provider" character varying(255)) 
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_uid" ON "users" USING btree ("uid")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140114161930')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140109203232')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140110194537')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140110194751')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140111023925')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140111040924')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140113182040')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140113200726')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140113200852')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140113203732')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140113204545')[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-14 12:01:27 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 98ms (Views: 80.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-14 12:01:28 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-14 12:01:28 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-14 12:01:28 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-14 12:01:28 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-14 12:01:28 -0500
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-14 12:01:31 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (64.8ms)
+Completed 200 OK in 84ms (Views: 69.2ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 12:02:09 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Melissa", "last_name"=>"Carbone", "email"=>"mcarbone1@gmail.com", "role"=>"Member", "gender"=>"Female", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007fa0765b6dc8 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-17292-ruvgmj>, @original_filename="1518434_10100337301476979_828773276_o.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"1518434_10100337301476979_828773276_o.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (8.6ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Tue, 14 Jan 2014 17:02:09 UTC +00:00], ["email", "mcarbone1@gmail.com"], ["first_name", "Melissa"], ["gender", "Female"], ["last_name", "Carbone"], ["photo_url", "1518434_10100337301476979_828773276_o.jpg"], ["role", "Member"], ["updated_at", Tue, 14 Jan 2014 17:02:09 UTC +00:00]]
+  [1m[35m (6.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 29ms (ActiveRecord: 15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-14 12:02:09 -0500
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-14 12:02:09 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-14 12:02:09 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-14 12:02:09 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-14 12:02:09 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-14 12:02:09 -0500
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 12:03:57 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"sdfsdf", "last_name"=>"sdfsdf", "email"=>"mcarbone1@gmail.com", "role"=>"Member", "gender"=>"Female", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007fa0757ba6c0 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-17292-dkx8zz>, @original_filename="1518434_10100337301476979_828773276_o.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"1518434_10100337301476979_828773276_o.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["created_at", Tue, 14 Jan 2014 17:03:57 UTC +00:00], ["email", "mcarbone1@gmail.com"], ["first_name", "sdfsdf"], ["gender", "Female"], ["last_name", "sdfsdf"], ["photo_url", "1518434_10100337301476979_828773276_o.jpg"], ["role", "Member"], ["updated_at", Tue, 14 Jan 2014 17:03:57 UTC +00:00]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 17ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-14 12:03:57 -0500
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-14 12:03:57 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-14 12:03:57 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-14 12:03:57 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-14 12:03:57 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-14 12:03:57 -0500

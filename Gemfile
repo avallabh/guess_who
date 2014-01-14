@@ -54,6 +54,7 @@ gem 'simple_form'
 gem 'omniauth-github'
 #gem 'omniauth-openid'
 gem 'omniauth-github-team-member'
+gem 'carrierwave'
 
 
 # Use ActiveModel has_secure_password
