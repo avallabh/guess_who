@@ -36,6 +36,7 @@ feature 'User adds a member', %Q{
 
   scenario 'with invalid or missing attributes' do
     visit 'members/new'
+    attach_file 'Member Photo', Rails.root.join('spec/file_fixtures/wrongphoto.zsf')
     click_on 'Create Member'
 
     expect(page).to_not have_content('Successfully created member')
@@ -45,6 +46,7 @@ feature 'User adds a member', %Q{
     expect(page).to have_content('Role is not included in the list')
     expect(page).to have_content('Email is not an email')
     expect(page).to have_content('Gender can\'t be blank')
+    expect(page).to have_content('You are not allowed to upload "zsf" files, allowed types: jpg, jpeg, gif, png')
   end
 
 end
