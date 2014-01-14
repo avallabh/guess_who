@@ -5084,3 +5084,380 @@ Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-14 13:35:10 
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-14 13:35:10 -0500
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 14:20:57 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Scott", "last_name"=>"Harman", "email"=>"sharman@nc.rr.com", "role"=>"Admin", "gender"=>"Male", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007fdb46266b90 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-20760-1cexoyt>, @original_filename="Launchers_163-38.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Launchers_163-38.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (11.5ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Tue, 14 Jan 2014 19:20:57 UTC +00:00], ["email", "sharman@nc.rr.com"], ["first_name", "Scott"], ["gender", "Male"], ["last_name", "Harman"], ["photo_url", "Launchers_163-38.jpg"], ["role", "Admin"], ["updated_at", Tue, 14 Jan 2014 19:20:57 UTC +00:00]]
+  [1m[35m (1.6ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 60059ms
+
+Excon::Errors::SocketError (getaddrinfo: nodename nor servname provided, or not known (SocketError)):
+  app/controllers/members_controller.rb:14:in `create'
+
+
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.5ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.9ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (57.9ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 14:23:00 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Scott ", "last_name"=>"Harman", "email"=>"sharman@nc.rr.com", "role"=>"Admin", "gender"=>"Male", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007fdb470cd968 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-20760-ag04yq>, @original_filename="Launchers_163-38.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Launchers_163-38.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["created_at", Tue, 14 Jan 2014 19:23:00 UTC +00:00], ["email", "sharman@nc.rr.com"], ["first_name", "Scott "], ["gender", "Male"], ["last_name", "Harman"], ["photo_url", "Launchers_163-38.jpg"], ["role", "Admin"], ["updated_at", Tue, 14 Jan 2014 19:23:00 UTC +00:00]]
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 2964ms
+
+Excon::Errors::Forbidden (Expected(200) <=> Actual(403 Forbidden)
+  response => #<Excon::Response:0x007fdb472a6af0 @data={:body=>"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>9DDFD6857D8E39C7</RequestId><HostId>nGfFKJ/zyR1WrdyfyPVwaMy79NRr6sTwYNpbiN38ZrmGhJluGM6FFF/k7x2q/Q/B</HostId></Error>", :headers=>{"x-amz-request-id"=>"9DDFD6857D8E39C7", "x-amz-id-2"=>"nGfFKJ/zyR1WrdyfyPVwaMy79NRr6sTwYNpbiN38ZrmGhJluGM6FFF/k7x2q/Q/B", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:23:03 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, :status=>403, :remote_ip=>"205.251.243.105"}, @body="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>9DDFD6857D8E39C7</RequestId><HostId>nGfFKJ/zyR1WrdyfyPVwaMy79NRr6sTwYNpbiN38ZrmGhJluGM6FFF/k7x2q/Q/B</HostId></Error>", @headers={"x-amz-request-id"=>"9DDFD6857D8E39C7", "x-amz-id-2"=>"nGfFKJ/zyR1WrdyfyPVwaMy79NRr6sTwYNpbiN38ZrmGhJluGM6FFF/k7x2q/Q/B", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:23:03 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, @status=403, @remote_ip="205.251.243.105">):
+  app/controllers/members_controller.rb:14:in `create'
+
+
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-14 14:24:46 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 53ms (Views: 33.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-14 14:24:46 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-14 14:24:47 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-14 14:24:47 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-14 14:24:47 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-14 14:24:47 -0500
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-14 14:24:49 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (66.3ms)
+Completed 200 OK in 88ms (Views: 72.3ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 14:25:07 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Scott", "last_name"=>"Harman", "email"=>"sharman@nc.rr.com", "role"=>"Admin", "gender"=>"Male", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007ff7c4918688 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-20941-erm0sf>, @original_filename="Launchers_163-38.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Launchers_163-38.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Tue, 14 Jan 2014 19:25:07 UTC +00:00], ["email", "sharman@nc.rr.com"], ["first_name", "Scott"], ["gender", "Male"], ["last_name", "Harman"], ["photo_url", "Launchers_163-38.jpg"], ["role", "Admin"], ["updated_at", Tue, 14 Jan 2014 19:25:07 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 2534ms
+
+Excon::Errors::Forbidden (Expected(200) <=> Actual(403 Forbidden)
+  response => #<Excon::Response:0x007ff7c4e17a58 @data={:body=>"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>0F2533CE0ADAA13C</RequestId><HostId>R92YxnxFejmcQ5Hmh2EIkFBLIZsF/WYt9Mf5Pr+KEZERwjQyl2nX8gmx1AFBA7RQ</HostId></Error>", :headers=>{"x-amz-request-id"=>"0F2533CE0ADAA13C", "x-amz-id-2"=>"R92YxnxFejmcQ5Hmh2EIkFBLIZsF/WYt9Mf5Pr+KEZERwjQyl2nX8gmx1AFBA7RQ", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:25:08 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, :status=>403, :remote_ip=>"176.32.102.41"}, @body="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>0F2533CE0ADAA13C</RequestId><HostId>R92YxnxFejmcQ5Hmh2EIkFBLIZsF/WYt9Mf5Pr+KEZERwjQyl2nX8gmx1AFBA7RQ</HostId></Error>", @headers={"x-amz-request-id"=>"0F2533CE0ADAA13C", "x-amz-id-2"=>"R92YxnxFejmcQ5Hmh2EIkFBLIZsF/WYt9Mf5Pr+KEZERwjQyl2nX8gmx1AFBA7RQ", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:25:08 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, @status=403, @remote_ip="176.32.102.41">):
+  app/controllers/members_controller.rb:14:in `create'
+
+
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.1ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (32.0ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 14:30:23 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Scott", "last_name"=>"Harman", "email"=>"sharman@nc.rr.com", "role"=>"Admin", "gender"=>"Male", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007ff7c24e54a0 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-20941-fav6u2>, @original_filename="Launchers_163-38.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Launchers_163-38.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["created_at", Tue, 14 Jan 2014 19:30:23 UTC +00:00], ["email", "sharman@nc.rr.com"], ["first_name", "Scott"], ["gender", "Male"], ["last_name", "Harman"], ["photo_url", "Launchers_163-38.jpg"], ["role", "Admin"], ["updated_at", Tue, 14 Jan 2014 19:30:23 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 3070ms
+
+Excon::Errors::Forbidden (Expected(200) <=> Actual(403 Forbidden)
+  response => #<Excon::Response:0x007ff7c4e0f6f0 @data={:body=>"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>209B4FD162A05609</RequestId><HostId>yOg9WCzmKgGGYp8A1qRHfxT63hUblsQIW3VkiYvFQM8mGEyvGiyIGMd4sa6q5ax/</HostId></Error>", :headers=>{"x-amz-request-id"=>"209B4FD162A05609", "x-amz-id-2"=>"yOg9WCzmKgGGYp8A1qRHfxT63hUblsQIW3VkiYvFQM8mGEyvGiyIGMd4sa6q5ax/", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:30:24 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, :status=>403, :remote_ip=>"176.32.100.76"}, @body="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>209B4FD162A05609</RequestId><HostId>yOg9WCzmKgGGYp8A1qRHfxT63hUblsQIW3VkiYvFQM8mGEyvGiyIGMd4sa6q5ax/</HostId></Error>", @headers={"x-amz-request-id"=>"209B4FD162A05609", "x-amz-id-2"=>"yOg9WCzmKgGGYp8A1qRHfxT63hUblsQIW3VkiYvFQM8mGEyvGiyIGMd4sa6q5ax/", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:30:24 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, @status=403, @remote_ip="176.32.100.76">):
+  app/controllers/members_controller.rb:14:in `create'
+
+
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.0ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 14:33:26 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Scott", "last_name"=>"Harman", "email"=>"sharman@nc.rr.com", "role"=>"Admin", "gender"=>"Male", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007fd67d4db2e0 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-21187-1j589ir>, @original_filename="Launchers_163-38.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Launchers_163-38.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (2.7ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Tue, 14 Jan 2014 19:33:27 UTC +00:00], ["email", "sharman@nc.rr.com"], ["first_name", "Scott"], ["gender", "Male"], ["last_name", "Harman"], ["photo_url", "Launchers_163-38.jpg"], ["role", "Admin"], ["updated_at", Tue, 14 Jan 2014 19:33:27 UTC +00:00]]
+  [1m[35m (0.4ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 2770ms
+
+Excon::Errors::Forbidden (Expected(200) <=> Actual(403 Forbidden)
+  response => #<Excon::Response:0x007fd67becd368 @data={:body=>"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>00B9696C080BDF2F</RequestId><HostId>5xj/tYmblQ+YDbwYv9cTSDVfCNMQEEBjfwoc5cFWGO6sZiWlys4NBPrft8IrzsnR</HostId></Error>", :headers=>{"x-amz-request-id"=>"00B9696C080BDF2F", "x-amz-id-2"=>"5xj/tYmblQ+YDbwYv9cTSDVfCNMQEEBjfwoc5cFWGO6sZiWlys4NBPrft8IrzsnR", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:33:28 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, :status=>403, :remote_ip=>"176.32.101.57"}, @body="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>00B9696C080BDF2F</RequestId><HostId>5xj/tYmblQ+YDbwYv9cTSDVfCNMQEEBjfwoc5cFWGO6sZiWlys4NBPrft8IrzsnR</HostId></Error>", @headers={"x-amz-request-id"=>"00B9696C080BDF2F", "x-amz-id-2"=>"5xj/tYmblQ+YDbwYv9cTSDVfCNMQEEBjfwoc5cFWGO6sZiWlys4NBPrft8IrzsnR", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:33:28 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, @status=403, @remote_ip="176.32.101.57">):
+  app/controllers/members_controller.rb:14:in `create'
+
+
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (56.9ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (81.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-14 14:35:14 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 1023ms (Views: 994.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-14 14:35:16 -0500
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-14 14:35:18 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (72.7ms)
+Completed 200 OK in 93ms (Views: 77.8ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 14:35:34 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Scott", "last_name"=>"Harman", "email"=>"sharman@nc.rr.com", "role"=>"Admin", "gender"=>"Male", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007fd8699a1728 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-21353-v5mgx>, @original_filename="Launchers_163-38.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Launchers_163-38.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (2.6ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Tue, 14 Jan 2014 19:35:34 UTC +00:00], ["email", "sharman@nc.rr.com"], ["first_name", "Scott"], ["gender", "Male"], ["last_name", "Harman"], ["photo_url", "Launchers_163-38.jpg"], ["role", "Admin"], ["updated_at", Tue, 14 Jan 2014 19:35:34 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 2804ms
+
+Excon::Errors::Forbidden (Expected(200) <=> Actual(403 Forbidden)
+  response => #<Excon::Response:0x007fd869bfe1d8 @data={:body=>"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>014D5DEA13877762</RequestId><HostId>onYACvmwGu5icWdrCiNFOi0kYp57sgHFze1DylcCRtHtRHHWo7s9tUDFtJw8Ia6W</HostId></Error>", :headers=>{"x-amz-request-id"=>"014D5DEA13877762", "x-amz-id-2"=>"onYACvmwGu5icWdrCiNFOi0kYp57sgHFze1DylcCRtHtRHHWo7s9tUDFtJw8Ia6W", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:35:36 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, :status=>403, :remote_ip=>"72.21.211.188"}, @body="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>014D5DEA13877762</RequestId><HostId>onYACvmwGu5icWdrCiNFOi0kYp57sgHFze1DylcCRtHtRHHWo7s9tUDFtJw8Ia6W</HostId></Error>", @headers={"x-amz-request-id"=>"014D5DEA13877762", "x-amz-id-2"=>"onYACvmwGu5icWdrCiNFOi0kYp57sgHFze1DylcCRtHtRHHWo7s9tUDFtJw8Ia6W", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:35:36 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, @status=403, @remote_ip="72.21.211.188">):
+  app/controllers/members_controller.rb:14:in `create'
+
+
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.2ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 14:42:55 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Scott", "last_name"=>"Harman", "email"=>"sharman@nc.rr.com", "role"=>"Admin", "gender"=>"Male", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007f9a94b512c0 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-21555-1ip3h51>, @original_filename="Launchers_163-38.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Launchers_163-38.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (3.2ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Tue, 14 Jan 2014 19:42:55 UTC +00:00], ["email", "sharman@nc.rr.com"], ["first_name", "Scott"], ["gender", "Male"], ["last_name", "Harman"], ["photo_url", "Launchers_163-38.jpg"], ["role", "Admin"], ["updated_at", Tue, 14 Jan 2014 19:42:55 UTC +00:00]]
+  [1m[35m (0.4ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 3818ms
+
+Excon::Errors::Forbidden (Expected(200) <=> Actual(403 Forbidden)
+  response => #<Excon::Response:0x007f9a92e65bc0 @data={:body=>"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>39C971143566AA89</RequestId><HostId>ZKE7cthn6QvFqYDxR1O5rESYPfsOnwtijE/gjcE47VaGz8jSfOzJaJWnb420eUiy</HostId></Error>", :headers=>{"x-amz-request-id"=>"39C971143566AA89", "x-amz-id-2"=>"ZKE7cthn6QvFqYDxR1O5rESYPfsOnwtijE/gjcE47VaGz8jSfOzJaJWnb420eUiy", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:42:58 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, :status=>403, :remote_ip=>"176.32.101.145"}, @body="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>39C971143566AA89</RequestId><HostId>ZKE7cthn6QvFqYDxR1O5rESYPfsOnwtijE/gjcE47VaGz8jSfOzJaJWnb420eUiy</HostId></Error>", @headers={"x-amz-request-id"=>"39C971143566AA89", "x-amz-id-2"=>"ZKE7cthn6QvFqYDxR1O5rESYPfsOnwtijE/gjcE47VaGz8jSfOzJaJWnb420eUiy", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:42:58 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, @status=403, @remote_ip="176.32.101.145">):
+  app/controllers/members_controller.rb:14:in `create'
+
+
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.6ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 14:45:29 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Scott", "last_name"=>"Harman", "email"=>"sharman@nc.rr.com", "role"=>"Admin", "gender"=>"Male", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007fa0846c3078 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-21678-13bm7ef>, @original_filename="Launchers_163-38.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Launchers_163-38.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Tue, 14 Jan 2014 19:45:29 UTC +00:00], ["email", "sharman@nc.rr.com"], ["first_name", "Scott"], ["gender", "Male"], ["last_name", "Harman"], ["photo_url", "Launchers_163-38.jpg"], ["role", "Admin"], ["updated_at", Tue, 14 Jan 2014 19:45:29 UTC +00:00]]
+  [1m[35m (0.4ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 3603ms
+
+Excon::Errors::Forbidden (Expected(200) <=> Actual(403 Forbidden)
+  response => #<Excon::Response:0x007fa083ef3e60 @data={:body=>"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>2F330C2428280D79</RequestId><HostId>ey6WWKiV7C5Dsnu7tbK729GVwZczFmARvRh1z8TbuC/2jHWTHn8VMYwtcgdrkNcv</HostId></Error>", :headers=>{"x-amz-request-id"=>"2F330C2428280D79", "x-amz-id-2"=>"ey6WWKiV7C5Dsnu7tbK729GVwZczFmARvRh1z8TbuC/2jHWTHn8VMYwtcgdrkNcv", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:45:32 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, :status=>403, :remote_ip=>"205.251.243.97"}, @body="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>2F330C2428280D79</RequestId><HostId>ey6WWKiV7C5Dsnu7tbK729GVwZczFmARvRh1z8TbuC/2jHWTHn8VMYwtcgdrkNcv</HostId></Error>", @headers={"x-amz-request-id"=>"2F330C2428280D79", "x-amz-id-2"=>"ey6WWKiV7C5Dsnu7tbK729GVwZczFmARvRh1z8TbuC/2jHWTHn8VMYwtcgdrkNcv", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:45:32 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, @status=403, @remote_ip="205.251.243.97">):
+  app/controllers/members_controller.rb:14:in `create'
+
+
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.5ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 14:49:37 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Scott", "last_name"=>"Harman", "email"=>"sharman@nc.rr.com", "role"=>"Admin", "gender"=>"Male", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007f9ba3c44690 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-21907-s82koc>, @original_filename="Launchers_163-38.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Launchers_163-38.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (3.9ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Tue, 14 Jan 2014 19:49:38 UTC +00:00], ["email", "sharman@nc.rr.com"], ["first_name", "Scott"], ["gender", "Male"], ["last_name", "Harman"], ["photo_url", "Launchers_163-38.jpg"], ["role", "Admin"], ["updated_at", Tue, 14 Jan 2014 19:49:38 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 3295ms
+
+Excon::Errors::Forbidden (Expected(200) <=> Actual(403 Forbidden)
+  response => #<Excon::Response:0x007f9ba37b1218 @data={:body=>"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>0D236390C3A73C10</RequestId><HostId>/MoSstGcLYy7WtsY5m4vgQAosS0GozkNMFEUbqbwC1bm6NqnCwbFa7jfqvGpSt5P</HostId></Error>", :headers=>{"x-amz-request-id"=>"0D236390C3A73C10", "x-amz-id-2"=>"/MoSstGcLYy7WtsY5m4vgQAosS0GozkNMFEUbqbwC1bm6NqnCwbFa7jfqvGpSt5P", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:49:40 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, :status=>403, :remote_ip=>"176.32.101.8"}, @body="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>0D236390C3A73C10</RequestId><HostId>/MoSstGcLYy7WtsY5m4vgQAosS0GozkNMFEUbqbwC1bm6NqnCwbFa7jfqvGpSt5P</HostId></Error>", @headers={"x-amz-request-id"=>"0D236390C3A73C10", "x-amz-id-2"=>"/MoSstGcLYy7WtsY5m4vgQAosS0GozkNMFEUbqbwC1bm6NqnCwbFa7jfqvGpSt5P", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Tue, 14 Jan 2014 19:49:40 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, @status=403, @remote_ip="176.32.101.8">):
+  app/controllers/members_controller.rb:14:in `create'
+
+
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (48.8ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.1ms)
+  Rendered /Users/melissacarbone/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (85.4ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 14:54:06 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Scott", "last_name"=>"Harman", "email"=>"sharman@nc.rr.com", "role"=>"Admin", "gender"=>"Male", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007f9ba6a13800 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-21907-17ddf6e>, @original_filename="Launchers_163-38.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Launchers_163-38.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["created_at", Tue, 14 Jan 2014 19:54:06 UTC +00:00], ["email", "sharman@nc.rr.com"], ["first_name", "Scott"], ["gender", "Male"], ["last_name", "Harman"], ["photo_url", "Launchers_163-38.jpg"], ["role", "Admin"], ["updated_at", Tue, 14 Jan 2014 19:54:06 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 980ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-14 14:54:07 -0500
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 25ms (Views: 23.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-14 14:54:07 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-14 14:54:07 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-14 14:54:07 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-14 14:54:07 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-14 14:54:07 -0500
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 14:58:09 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Foo", "last_name"=>"Bar", "email"=>"baz@example.com", "role"=>"test", "gender"=>"Female", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007f9ba287f4c0 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-21907-1122mv>, @original_filename="Launchers_24-4.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Launchers_24-4.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  Rendered members/new.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 33ms (Views: 22.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-14 14:58:09 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-14 14:58:09 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-14 14:58:09 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-14 14:58:09 -0500
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 14:58:24 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Foo", "last_name"=>"Bar", "email"=>"baz@example.com", "role"=>"Admin", "gender"=>"Female", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007f9ba28771f8 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-21907-wobu2j>, @original_filename="Erin.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Erin.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Tue, 14 Jan 2014 19:58:24 UTC +00:00], ["email", "baz@example.com"], ["first_name", "Foo"], ["gender", "Female"], ["last_name", "Bar"], ["photo_url", "Erin.jpg"], ["role", "Admin"], ["updated_at", Tue, 14 Jan 2014 19:58:24 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 890ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-14 14:58:25 -0500
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-14 14:58:25 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-14 14:58:25 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-14 14:58:25 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-14 14:58:25 -0500
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-14 14:59:43 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 128ms (Views: 97.1ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 15:00:08 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Bob", "last_name"=>"Testerson", "email"=>"test@example.com", "role"=>"Admin", "gender"=>"Male", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007ff41733a348 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-22204-1jnlfej>, @original_filename="Launchers_32-6.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Launchers_32-6.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Tue, 14 Jan 2014 20:00:08 UTC +00:00], ["email", "test@example.com"], ["first_name", "Bob"], ["gender", "Male"], ["last_name", "Testerson"], ["photo_url", "Launchers_32-6.jpg"], ["role", "Admin"], ["updated_at", Tue, 14 Jan 2014 20:00:08 UTC +00:00]]
+  [1m[35m (2.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 3171ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-14 15:00:11 -0500
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-14 15:00:11 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-14 15:00:11 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-14 15:00:11 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-14 15:00:11 -0500
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-14 15:13:58 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/members" for 127.0.0.1 at 2014-01-14 15:14:17 -0500
+Processing by MembersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GO7po1zbZINFGC326OHMJIAjgYHjBfgJfl8PH+9JfGA=", "member"=>{"first_name"=>"Scott", "last_name"=>"Harman", "email"=>"sharman@nc.rr.com", "role"=>"Admin", "gender"=>"Male", "photo_url"=>#<ActionDispatch::Http::UploadedFile:0x007ff411af77d0 @tempfile=#<Tempfile:/var/folders/h7/xdzh4jcs11jb1_9n_4js6v600000gn/T/RackMultipart20140114-22204-14wakbu>, @original_filename="Launchers_163-38.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"member[photo_url]\"; filename=\"Launchers_163-38.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Member"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "members" ("created_at", "email", "first_name", "gender", "last_name", "photo_url", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["created_at", Tue, 14 Jan 2014 20:14:17 UTC +00:00], ["email", "sharman@nc.rr.com"], ["first_name", "Scott"], ["gender", "Male"], ["last_name", "Harman"], ["photo_url", "Launchers_163-38.jpg"], ["role", "Admin"], ["updated_at", Tue, 14 Jan 2014 20:14:17 UTC +00:00]]
+  [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 887ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-14 15:14:18 -0500
+Processing by GuessWhoController#index as HTML
+  Rendered guess_who/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-14 15:14:18 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-14 15:14:18 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-14 15:14:18 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-14 15:14:18 -0500
+
+
+Started GET "/members/new" for 127.0.0.1 at 2014-01-14 15:16:43 -0500
+Processing by MembersController#new as HTML
+  Rendered members/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms)
