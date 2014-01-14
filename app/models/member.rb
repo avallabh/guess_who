@@ -11,4 +11,8 @@ class Member < ActiveRecord::Base
   has_many :identities
   has_many :identity_types, through: :identities
 
+  def full_name
+    [first_name, last_name].compact.join(', ')
+  end
+
 end
