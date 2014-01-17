@@ -13,16 +13,16 @@ class Member < ActiveRecord::Base
 
   mount_uploader :photo_url, PhotoUrlUploader
 
-  def initialize
-    @member = random_member
-    @name_options = Member.all.reject{|m| m == @member}.map{|m| m.full_name}.sample(3) << @member.full_name
-  end
-  def random_member
-    Member.random_member
-  end
+  # def initialize
+  #   @member = random_member
+  #   @name_options = Member.all.reject{|m| m == @member}.map{|m| m.full_name}.sample(3) << @member.full_name
+  # end
+  # def random_member
+  #   Member.random_member
+  # end
 
   def self.random_member
-    person = self.find("#{rand(1..self.count)}")
+    self.find("#{rand(1..self.count)}")
   end
 
   def full_name

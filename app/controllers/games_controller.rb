@@ -13,7 +13,7 @@ class GamesController < ApplicationController
   end
 
   def set_new_member
-    @random_member = Member.random_member.full_name
+    @random_member = Member.random_member
     session[:last_member] = @random_member
   end
 

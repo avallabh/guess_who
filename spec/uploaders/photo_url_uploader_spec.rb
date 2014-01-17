@@ -11,7 +11,7 @@ describe PhotoUrlUploader do
   end
 
   let(:path) do
-    Rails.root.join('spec/file_fixtures/myphoto.jpg')
+    Rails.root.join('spec/file_fixtures/bg1.jpg')
   end
 
   before do

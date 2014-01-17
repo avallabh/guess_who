@@ -22,7 +22,7 @@ feature 'User adds a member', %Q{
     fill_in 'Role',           with: 'Member'
     fill_in 'Email',          with: 'test@example.com'
     choose  'member_gender_male'
-    attach_file 'Member Photo', Rails.root.join('spec/file_fixtures/myphoto.jpg')
+    attach_file 'Member Photo', Rails.root.join('spec/file_fixtures/bg1.jpg')
     click_on 'Create Member'
 
 
@@ -36,7 +36,7 @@ feature 'User adds a member', %Q{
 
   scenario 'with invalid or missing attributes' do
     visit 'members/new'
-    attach_file 'Member Photo', Rails.root.join('spec/file_fixtures/wrongphoto.zsf')
+    attach_file 'Member Photo', Rails.root.join('spec/file_fixtures/bg2.zsf')
     click_on 'Create Member'
 
     expect(page).to_not have_content('Successfully created member')

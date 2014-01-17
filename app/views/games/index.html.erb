@@ -5,11 +5,7 @@
   simple_form_for @review, url: url_for(action: 'create', controller: 'reviews', method: 'post')
 -->
 <% test = @name_options = Member.all.reject{|m| m.full_name == @random_member}.map{|m| m.full_name}.sample(3) << @random_member %>
-<%= simple_form_for @random_member, url: games_path do |f| %>
 
-  <%= f.input :full_name, label: '', collection: test, as: :radio_buttons %>
-  <%= f.button :submit, 'Submit' %>
-<% end %>
 
 
 <% test.shuffle.each do |member| %>
