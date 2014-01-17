@@ -1,6 +1,5 @@
 class GuessWhoController < ApplicationController
   def index
-
   end
 
   # def update
