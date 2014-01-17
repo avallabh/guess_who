@@ -11,6 +11,8 @@ class Member < ActiveRecord::Base
   has_many :identities
   has_many :identity_types, through: :identities
 
+  mount_uploader :photo_url, PhotoUrlUploader
+
   def initialize
     @member = random_member
     @name_options = Member.all.reject{|m| m == @member}.map{|m| m.full_name}.sample(3) << @member.full_name

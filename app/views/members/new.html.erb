@@ -34,5 +34,11 @@
   <%= f.radio_button :gender, "Female" %> <%= f.label :gender, "Female" %>
   <%= f.radio_button :gender, "Male" %> <%= f.label :gender, "Male" %>
 </p>
+
+<p>
+  <%= f.label :photo_url, "Member Photo" %>
+  <%= f.file_field :photo_url %>
+</p>
+
 <%= f.submit %>
 <% end %>
