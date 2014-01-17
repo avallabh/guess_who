@@ -10,7 +10,6 @@ class MembersController < ApplicationController
 
   def create
     @member = Member.new(member_params)
-
     if @member.save
       redirect_to root_path, notice: 'Successfully created member'
     else

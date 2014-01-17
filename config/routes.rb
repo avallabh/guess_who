@@ -5,14 +5,20 @@ GuessWhoAgain::Application.routes.draw do
     resources :identities
   end
   resources :identity_types
-  #   resources :identities
-  # end
+  resources :games
+
+  get 'games', to: 'games#index'
 
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :guess_who #, path: 'NAME OF NEW ROUTE'
+  resources :guess_who
+   #, path: 'NAME OF NEW ROUTE'
   resources :sessions
   resources :users
+
+  # namespace :guess_who do
+  #   post 'play'
+  # end
 
 
   root to: 'guess_who#index'
