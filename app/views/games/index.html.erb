@@ -6,7 +6,7 @@
 -->
 <% test = @name_options = Member.all.reject{|m| m == @random_member}.map{|m| m}.sample(3) << @random_member %>
 
-<%= @random_member.full_name %>
+<%= image_tag @random_member.photo_url.resize_to_fit(100,100) %>
 
 <% test.shuffle.each do |member| %>
   <%= link_to member.full_name, games_path(guess: member) %>

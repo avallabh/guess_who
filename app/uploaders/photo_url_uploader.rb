@@ -4,7 +4,7 @@ class PhotoUrlUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
 # if Rails.env.production? || Rails.env.development?
@@ -31,13 +31,15 @@ class PhotoUrlUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #
-  # def scale(width, height)
-  #   # do something
+  # def resize(width, height)
+  #   image = MiniMagick::Image.open("input.jpg")
+  #   image.resize "100x100"
+  #   image.write  "output.jpg"
   # end
 
   # Create different versions of your uploaded files:
   # version :thumb do
-  #   process :scale => [50, 50]
+     process :resize_to_fit => [100, 100]
   # end
 
   # Add a white list of extensions which are allowed to be uploaded.

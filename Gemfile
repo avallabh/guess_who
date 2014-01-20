@@ -56,6 +56,7 @@ gem 'omniauth-github'
 gem 'omniauth-github-team-member'
 gem 'carrierwave'
 gem 'fog'
+gem 'mini_magick'
 
 
 # Use ActiveModel has_secure_password
