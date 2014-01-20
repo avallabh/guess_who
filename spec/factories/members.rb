@@ -1,12 +1,14 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+include ActionDispatch::TestProcess
 
 FactoryGirl.define do
   factory :member do
-    first_name "John"
+    sequence(:first_name) {|x| "John#{x}"}
     last_name "Smith"
     role "Member"
-    sequence(:email) {|x| "test#{x}@email.com"}
+    sequence(:email) {|y| "test#{y}@email.com"}
     gender "Male"
+    photo_url { fixture_file_upload("spec/file_fixtures/bg1.jpg", "image/jpeg") }
+    # sequence(:photo_url) {|z|"photo#{z}.jpg"}
   end
 end
 

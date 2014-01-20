@@ -58,6 +58,10 @@ raw_info: !ruby/hash:OmniAuth::AuthHash
 
 class SessionsController < ApplicationController
 
+  before do
+    request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:github]
+  end
+
   def index
   end
 

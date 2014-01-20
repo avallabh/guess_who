@@ -1,8 +1,9 @@
 class GamesController < ApplicationController
+
   def index
 
     @last_guess = Member.find(session[:last_member_id]) if session[:last_member_id]
-
+binding.pry
     if @last_guess.id && params[:guess].to_i == @last_guess.id
       flash[:notice] = 'right on playa!'
       set_new_member
