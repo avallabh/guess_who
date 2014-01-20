@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
   def index
 
     @last_guess = Member.find(session[:last_member_id]) if session[:last_member_id]
