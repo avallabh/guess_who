@@ -1,15 +1,17 @@
 class GamesController < ApplicationController
-
+  before_filter :authenticate_user!
   def index
 
     @last_guess = Member.find(session[:last_member_id]) if session[:last_member_id]
-binding.pry
-    if @last_guess.id && params[:guess].to_i == @last_guess.id
-      flash[:notice] = 'right on playa!'
-      set_new_member
-    elsif params[:guess].present?
-      flash[:notice] = 'dont you know anyone?'
-      @random_member = @last_guess
+
+    if @last_guess != nil
+      if @last_guess.id && params[:guess].to_i == @last_guess.id
+        flash[:notice] = 'right on playa!'
+        set_new_member
+      elsif params[:guess].present?
+        flash[:notice] = 'dont you know anyone?'
+        @random_member = @last_guess
+      end
     else
       set_new_member
     end
