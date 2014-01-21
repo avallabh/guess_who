@@ -18,7 +18,7 @@ describe Identity do
   #   it 'generates service-specific urls' do
   #     m = FactoryGirl.build(:github)
   #     expect(m.get_url).to eq(
-  #       "http://gihtub.com/"+m.value
+  #       "http://github.com/"+m.value
   #       )
   #   end
   # end

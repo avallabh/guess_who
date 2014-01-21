@@ -1,14 +1,6 @@
 require 'spec_helper'
 
 describe Member do
-  # describe 'validations' do
-  #   let(:member){FactoryGirl.create(:member)}
-
-  #   it 'is valid when it has all required and valid attributes' do
-  #     expect(member).to be_valid
-  #   end
-  # end
-
 
   it {should have_valid(:first_name).when('John')}
   it {should_not have_valid(:first_name).when('', nil)}
@@ -23,7 +15,5 @@ describe Member do
   it {should have_valid(:gender).when('Female')}
   it {should_not have_valid(:gender).when('', nil)}
   it {should_not have_valid(:gender).when('xaheqfldj')}
-
-  #it {should belong_to :user}
   it {should have_many :identities}
 end

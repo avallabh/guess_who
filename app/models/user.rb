@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  validates_presence_of :uid, :name #, :github_token
-  validates_uniqueness_of :uid #, :display_name
+  validates_presence_of :uid, :name
+  validates_uniqueness_of :uid
 
   def self.create_with_omniauth(auth)
     create! do |user|

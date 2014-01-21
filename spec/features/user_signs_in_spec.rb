@@ -20,7 +20,7 @@ feature 'user signs in', %Q{
     visit root_path
     click_link 'Sign In With GitHub'
 
-    expect(page).to have_content "Signed In as James Bond"
+    expect(page).to have_content "You have successfully signed in!"
   end
 
   scenario 'fails to do so when authentication fails' do
