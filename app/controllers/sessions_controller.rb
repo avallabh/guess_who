@@ -66,10 +66,13 @@ class SessionsController < ApplicationController
   end
 
   def create
+
 # gets the hash of ALL INFO
 #    raise request.env["omniauth.auth"].to_yaml
     auth = request.env["omniauth.auth"]
-    user = User.find_or_create_by(provider: auth["provider"], uid: auth["uid"]) #|| User.create_with_omniauth(auth)
+
+    user = User.find_or_create_by!(name: auth["info"]["name"], provider: auth["provider"], uid: auth["uid"]) #|| User.create_with_omniauth(auth)
+
     #user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
     session[:user_id] = user.id
     redirect_to root_path, notice: 'You have successfully signed in!'
@@ -78,6 +81,10 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_path, notice: 'You have successfully signed out!'
+  end
+
+  def failure
+    redirect_to root_path, notice: 'Authentication Failed'
   end
 
 end

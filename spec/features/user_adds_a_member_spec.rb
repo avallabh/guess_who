@@ -35,6 +35,8 @@ feature 'User adds a member', %Q{
   end
 
   scenario 'with invalid or missing attributes' do
+    visit root_path
+    click_on 'Sign In'
     visit 'members/new'
     attach_file 'Member Photo', Rails.root.join('spec/file_fixtures/bg2.zsf')
     click_on 'Create Member'
