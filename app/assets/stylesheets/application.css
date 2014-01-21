@@ -9,5 +9,18 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require foundation_and_overrides
+
  *= require_tree .
  */
+
+.centered {
+  margin: 0 auto;
+  padding: 0px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body { background-color: #def0f4; }

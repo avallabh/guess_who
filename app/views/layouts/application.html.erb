@@ -3,27 +3,41 @@
 <head>
   <title>GuessWhoAgain</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%#= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-   <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
+  <!-- BEGIN TOP NAV BAR -->
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="<%= root_path %>">Guess Who!</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <div class="button-bar">
+          <ul class="button-group right">
+            <% if current_user %>
+            <li><%= link_to 'Sign Out', logout_path %></li>
+            <% else %>
+            <li><%= link_to 'Sign In With GitHub', '/auth/github' %></li>
+            <% end %>
+          </ul>
+        </div>
+      </ul>
+      <!-- Left Nav Section -->
+        <!-- <ul class="left">
+          <li></li>
+        </ul> -->
+      </section>
+    </nav>
+    <!-- END TOP NAV BAR -->
+    <% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: "#{name} alert-box" %>
     <% end -%>
-<nav>
-  <% if current_user %>
-  <ul>
-    <li>Signed In as <%= current_user.name %></li>
-    <li><%= link_to 'Sign Out', logout_path %></li>
-    <li><%= link_to 'Add Member', new_member_path %></li>
-    <li><%= link_to 'Play Game', games_path %></li>
-  <% else %>
-    <%= link_to 'Sign In With GitHub', '/auth/github' %>
-  <% end %>
-  </ul>
-</nav>
-
-<%= yield %>
-<%= notice %>
+    <%= yield %>
 </body>
 </html>

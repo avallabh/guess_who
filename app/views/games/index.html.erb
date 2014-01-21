@@ -1,20 +1,27 @@
-<h1>Guess Who! - Learn Names</h1>
-<br/>
+<div class="row">
+  <div class="small-12 columns text-center">
+    <h1>Guess Who!</h1>
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="small-12 columns text-center">
+    <% test = Member.all.reject{|m| m == @random_member}.map{|m| m}.sample(3) << @random_member %>
+    <%= image_tag @random_member.photo_url %>
+  </div>
+</div>
 
-<!--
-  simple_form_for @review, url: url_for(action: 'create', controller: 'reviews', method: 'post')
--->
-<% test = @name_options = Member.all.reject{|m| m == @random_member}.map{|m| m}.sample(3) << @random_member %>
-
-<%= image_tag @random_member.photo_url %>
-
-<% test.shuffle.each do |member| %>
-  <%= link_to member.full_name, games_path(guess: member) %>
-<% end %>
-
-<!--  url: url_for(action: 'create', controller: 'reviews', method: 'post') do -->
-<!--
-<#% test = [@random_member.full_name, 'hello', 'final item'] %>
-@member = random_member
-@name_options = Member.all.reject{|m| m == @member}.map{|m| m.full_name}.sample(3) << @member.full_name
- -->
+<p></p>
+<div class="row">
+  <div class="small-12 columns text-center">
+    <ul>
+      <% test.shuffle.each do |member| %>
+      <li><%= link_to member.full_name, games_path(guess: member) %></li>
+      <!--
+      DISPLAY OPTIONS AS BUTTONS. FOUNDATION'S HOVER EFFECTS ARE COVERING NAMES.
+      <li class="button large"><%#= link_to member.full_name, games_path(guess: member) %></li>
+      -->
+    <% end %>
+    </ul>
+  </div>
+</div>

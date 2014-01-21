@@ -1,35 +1,43 @@
-<h1>Add your member information:</h1>
-
-<%= notice %>
+<!--
+* Page to add new identity types for a specific member.
+* Remove Ruby comments (#) after removing the HTML comment over the entire page.
+-->
 
 <!--
- simple_form_for @review, url: url_for(action: 'create', controller: 'reviews', method: 'post') do |f|
--->
-<%= form_for @identity, url: url_for(action: 'create', controller: 'identities', method: 'post') do |f| %>
-<% if @identity.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-  <ul>
-    <% @identity.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
+<div class="row">
+  <div class="small-5 columns text-center">
+    <h1>Add Member Information</h1>
+  </div>
 </div>
-<% end %>
-<p>
-  <%= f.label :member_id %>
-  <%= f.collection_select(:member_id, Member.all, :id, :email, {include_blank: true} ) %>
-</p>
-<p>
-  <%= f.label :identity_type_id %>
-  <%= f.collection_select(:identity_type_id, IdentityType.all, :id, :identity_kind, {include_blank: true} ) %>
-</p>
-<p>
-  <%= f.label :value, 'Enter Info' %>
-  <%= f.text_field :value %>
-</p>
 
+<div class="row">
+  <div class="small-5 columns text-center">
+    <%#= form_for @identity, url: url_for(action: 'create', controller: 'identities', method: 'post') do |f| %>
+    <%# if @identity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%#= pluralize(@identity.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-<%= f.submit 'Add Member Information' %>
-<% end %>
+      <ul>
+        <%# @identity.errors.full_messages.each do |msg| %>
+        <li><%#= msg %></li>
+        <%# end %>
+      </ul>
+    </div>
+    <%# end %>
+    <p>
+      <%#= f.label :member_id %>
+      <%#= f.collection_select(:member_id, Member.all, :id, :email, {include_blank: true} ) %>
+    </p>
+    <p>
+      <%#= f.label :identity_type_id %>
+      <%#= f.collection_select(:identity_type_id, IdentityType.all, :id, :identity_kind, {include_blank: true} ) %>
+    </p>
+    <p>
+      <%#= f.label :value, 'Enter Info' %>
+      <%#= f.text_field :value %>
+    </p>
+    <%#= f.submit 'Add Member Information' %>
+    <%# end %>
+  </div>
+</div>
+-->
