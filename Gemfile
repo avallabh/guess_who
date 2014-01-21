@@ -34,6 +34,7 @@ end
 
 group :test do
   gem 'factory_girl_rails'
+  gem 'rack_session_access'
 end
 
 group :test, :development do
