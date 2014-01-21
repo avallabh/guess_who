@@ -10,6 +10,19 @@
    <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg, class: name %>
     <% end -%>
+<nav>
+  <% if current_user %>
+  <ul>
+    <li>Signed In as <%= current_user.name %></li>
+    <li><%= link_to 'Sign Out', logout_path %></li>
+    <li><%= link_to 'Add Member', new_member_path %></li>
+    <li><%= link_to 'Play Game', games_path %></li>
+  <% else %>
+    <%= link_to 'Sign In With GitHub', '/auth/github' %>
+  <% end %>
+  </ul>
+</nav>
+
 <%= yield %>
 <%= notice %>
 </body>

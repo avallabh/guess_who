@@ -15,6 +15,13 @@ feature 'User adds a member', %Q{
   # *I must include a photo of the member.
   # *It must be jpg, png, or gif.
 
+before do
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.add_mock :github, uid: "12345", info: { name: "James Bond", nickname: 'jbond' }
+    visit root_path
+    click_link 'Sign In With GitHub'
+end
+
   scenario 'with all required and valid attributes' do
     visit 'members/new'
     fill_in 'First Name',     with: 'John'
@@ -27,7 +34,6 @@ feature 'User adds a member', %Q{
 
 
     expect(page).to have_content('Successfully created member')
-    expect(page).to have_content('Sign In With GitHub')
     expect(page).to have_content('Add Member')
     expect(page).to have_content('Play Game')
 
@@ -35,8 +41,6 @@ feature 'User adds a member', %Q{
   end
 
   scenario 'with invalid or missing attributes' do
-    visit root_path
-    click_on 'Sign In'
     visit 'members/new'
     attach_file 'Member Photo', Rails.root.join('spec/file_fixtures/bg2.zsf')
     click_on 'Create Member'

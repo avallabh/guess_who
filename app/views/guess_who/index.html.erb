@@ -1,12 +1,1 @@
-<h1>INDEX PAGE</h1>
-
-<!-- Check for current user fails -->
-<% if current_user %>
-  Signed In as <%= current_user.name %>
- <%= link_to 'Sign Out', logout_path %> |
- <%= link_to 'Add Member', new_member_path %> |
- <%= link_to 'Play Game', games_path %>
-<% else %>
-  <%= link_to 'Sign In With GitHub', '/auth/github' %>
-
-<% end %>
+<h1>Welcome to Guess Who!</h1>

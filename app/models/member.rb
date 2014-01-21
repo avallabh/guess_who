@@ -22,7 +22,7 @@ class Member < ActiveRecord::Base
   # end
 
   def self.random_member
-    self.find("#{rand(1..self.count)}")
+    all.sample(1).first
   end
 
   def full_name
