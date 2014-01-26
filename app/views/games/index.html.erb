@@ -16,11 +16,12 @@
   <div class="small-12 columns text-center">
     <ul>
       <% test.shuffle.each do |member| %>
-      <li><%= link_to member.full_name, games_path(guess: member) %></li>
-      <!--
-      DISPLAY OPTIONS AS BUTTONS. FOUNDATION'S HOVER EFFECTS ARE COVERING NAMES.
-      <li class="button large"><%#= link_to member.full_name, games_path(guess: member) %></li>
-      -->
+      <!-- <li><%#= link_to member.full_name, games_path(guess: member) %></li> -->
+
+      <li>
+        <%= link_to member.full_name, games_path(guess: member), { class: 'button'} %>
+      </li>
+
     <% end %>
     </ul>
   </div>
